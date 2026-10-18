@@ -22,6 +22,8 @@ export function SiteHeader() {
   const locale = useLocale();
   // Hash linkleri her sayfadan (ör. 404) o dilin ana sayfasına gitsin
   const home = getPathname({ href: "/", locale });
+  const linkFor = (href: string) =>
+    href.startsWith("#") ? `${home}${href}` : getPathname({ href, locale });
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -63,7 +65,7 @@ export function SiteHeader() {
             {navItems.map((item) => (
               <li key={item.href}>
                 <a
-                  href={`${home}${item.href}`}
+                  href={linkFor(item.href)}
                   className="block rounded-full px-4 py-1.5 text-sm text-muted-foreground transition-colors outline-none hover:bg-secondary hover:text-foreground focus-visible:ring-3 focus-visible:ring-ring/40"
                 >
                   {t(item.key)}
@@ -105,7 +107,7 @@ export function SiteHeader() {
                     <li key={item.href} className="border-b border-border">
                       <SheetClose
                         nativeButton={false}
-                        render={<a href={`${home}${item.href}`} />}
+                        render={<a href={linkFor(item.href)} />}
                         className="block py-5 text-3xl font-semibold tracking-tight"
                       >
                         {t(item.key)}

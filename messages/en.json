@@ -7,7 +7,6 @@
     "whatsappMessage": "Hi Seydullah, I found you through your website. I'd like to talk about a project.",
     "whatsappCta": "Message on WhatsApp",
     "language": "Language",
-    "switchTo": "Türkçe",
     "localTimeCity": "Istanbul"
   },
   "Nav": {
@@ -15,9 +14,9 @@
     "mobileLabel": "Mobile menu",
     "menu": "Menu",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu",
     "about": "About",
     "services": "Services",
+    "blog": "Blog",
     "contact": "Contact"
   },
   "Hero": {
@@ -97,6 +96,17 @@
         ]
       }
     }
+  },
+  "Blog": {
+    "eyebrow": "Blog",
+    "title": "Notes and writing.",
+    "description": "What I learn while building, the technical decisions I make and why.",
+    "metaTitle": "Blog — Seydullah Kaya",
+    "minutesRead": "{minutes} min read",
+    "allPosts": "All posts",
+    "backToBlog": "All posts",
+    "toc": "On this page",
+    "empty": "No posts yet."
   },
   "Footer": {
     "title": "Let's build something together.",

@@ -1,0 +1,77 @@
+---
+title: "How I built this site: Next.js 16, next-intl and MDX"
+description: "The architectural decisions behind moving my personal site from static HTML to Next.js 16: static rendering, bilingual routing, design tokens and an MDX blog."
+date: 2026-10-19
+---
+
+The first version was plain HTML, CSS and a small PHP form. It worked, but every copy change had to be made twice, once per language, and adding a blog post meant touching several files. In this post I walk through the decisions behind the new version and why I made them.
+
+## Goals
+
+Before picking any technology, I wrote down what the site had to do:
+
+- **Speed:** Lighthouse 95+ and first content in under a second.
+- **Two languages:** Turkish by default, English under `/en`, with all copy managed in one place.
+- **Easy content:** Posts written in Markdown, no database required.
+- **Maintainability:** Type safety, a consistent design system and automatic deploys on every push.
+
+## Why Next.js 16?
+
+Astro is a great fit for this kind of site. But most of my client work runs on React and Next.js, and using the same stack here means everything I learn carries straight over to that work.
+
+With `cacheComponents` enabled, Next.js 16 renders pages statically by default. If you read a value that can change between renders, such as `new Date()`, the framework asks you to cache it explicitly:
+
+```tsx title="components/current-year.tsx"
+import { cacheLife } from "next/cache";
+
+export async function CurrentYear() {
+  "use cache";
+  cacheLife("days");
+  return <>{new Date().getFullYear()}</>;
+}
+```
+
+It looks like extra work at first. But seeing this while writing the code is far better than hunting down later why a page stopped being static.
+
+## Bilingual routing
+
+I used `next-intl` for internationalization. Turkish URLs have no prefix, while English URLs start with `/en`:
+
+```ts title="i18n/routing.ts"
+import { defineRouting } from "next-intl/routing";
+
+export const routing = defineRouting({
+  locales: ["tr", "en"],
+  defaultLocale: "tr",
+  localePrefix: "as-needed",
+  localeDetection: false,
+});
+```
+
+I turned `localeDetection` off on purpose, so `/` always serves Turkish regardless of the browser language. Each language gets a stable URL for search engines, and the `hreflang` tags point to those URLs.
+
+### Type-safe translations
+
+Once the message file's type is registered with `next-intl`, a missing key fails at compile time:
+
+```ts title="global.d.ts"
+import type messages from "./messages/tr.json";
+
+declare module "next-intl" {
+  interface AppConfig {
+    Messages: typeof messages;
+  }
+}
+```
+
+## Design tokens
+
+Colors, typography and radii are defined as tokens in the Tailwind v4 theme. Heading sizes scale fluidly with `clamp()`. Components never use raw color values; everything comes from tokens, so adding a dark theme is just a matter of swapping token values.
+
+## An MDX blog
+
+Posts live in the repo under `content/blog/tr` and `content/blog/en`. Frontmatter is read on the server for the listing page and the table of contents, while the post itself is compiled by `@next/mdx` into static HTML at build time. Code blocks are highlighted with Shiki, also at build time, so no extra JavaScript ships to the browser.
+
+## Wrapping up
+
+In the new setup, publishing a post means adding one `.mdx` file, and changing a piece of copy means updating one JSON key. The infrastructure takes care of the rest: static generation, translations and deployment.

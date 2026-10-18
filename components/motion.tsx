@@ -44,13 +44,16 @@ export function Reveal({
 export function RevealItem({
   children,
   className,
+  as = "div",
 }: {
   children: ReactNode;
   className?: string;
+  as?: "div" | "li";
 }) {
+  const Component = as === "li" ? motion.li : motion.div;
   return (
-    <motion.div className={className} variants={item}>
+    <Component className={className} variants={item}>
       {children}
-    </motion.div>
+    </Component>
   );
 }

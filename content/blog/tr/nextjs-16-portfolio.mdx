@@ -1,0 +1,77 @@
+---
+title: "Bu siteyi nasıl kurdum: Next.js 16, next-intl ve MDX"
+description: "Kişisel sitemi statik HTML'den Next.js 16'ya taşırken verdiğim mimari kararlar: statik render, iki dilli yönlendirme, tasarım tokenları ve MDX ile blog."
+date: 2026-10-19
+---
+
+İlk sürüm düz HTML, CSS ve küçük bir PHP formundan oluşuyordu. Çalışıyordu ama her metin değişikliği iki dilde ayrı ayrı elle yapılıyordu ve bir blog yazısı eklemek birkaç dosyaya dokunmak demekti. Bu yazıda yeni sürümü kurarken verdiğim kararları ve nedenlerini anlatıyorum.
+
+## Hedefler
+
+Teknolojiyi seçmeden önce siteden ne beklediğimi netleştirdim:
+
+- **Hız:** Lighthouse 95+ ve ilk içerik 1 saniyenin altında.
+- **İki dil:** Türkçe varsayılan, İngilizce `/en` altında; metinler tek bir yerden yönetilsin.
+- **Kolay içerik:** Blog yazıları Markdown ile yazılsın, veritabanı gerekmesin.
+- **Bakım:** Tip güvenliği, tutarlı tasarım ve her push'ta otomatik yayın.
+
+## Neden Next.js 16?
+
+Bu tür bir site için Astro da çok iyi bir seçenek. Ama müşteri projelerimin çoğu React ve Next.js üzerinde. Aynı yığını kendi sitemde kullanmak, öğrendiğim her şeyi doğrudan işime taşımamı sağlıyor.
+
+Next.js 16'da `cacheComponents` açıkken sayfalar varsayılan olarak statik üretiliyor. Render sırasında değişebilecek bir değer kullanırsanız (örneğin `new Date()`), framework bunu açıkça önbelleğe almanızı istiyor:
+
+```tsx title="components/current-year.tsx"
+import { cacheLife } from "next/cache";
+
+export async function CurrentYear() {
+  "use cache";
+  cacheLife("days");
+  return <>{new Date().getFullYear()}</>;
+}
+```
+
+İlk bakışta fazladan iş gibi görünüyor. Ama sayfanın neden statik olmadığını sonradan aramak yerine, bunu kod yazarken görmek çok daha iyi.
+
+## İki dilli yönlendirme
+
+Çoklu dil için `next-intl` kullandım. Türkçe adresler önek almıyor, İngilizce adresler `/en` ile başlıyor:
+
+```ts title="i18n/routing.ts"
+import { defineRouting } from "next-intl/routing";
+
+export const routing = defineRouting({
+  locales: ["tr", "en"],
+  defaultLocale: "tr",
+  localePrefix: "as-needed",
+  localeDetection: false,
+});
+```
+
+`localeDetection` özelliğini bilerek kapattım. Böylece `/` adresi tarayıcı dilinden bağımsız olarak her zaman Türkçe açılıyor. Arama motorları için her dilin sabit bir adresi oluyor, `hreflang` etiketleri de bu adresleri işaret ediyor.
+
+### Tip güvenli çeviriler
+
+Mesaj dosyasının tipini `next-intl` modülüne tanıtınca, var olmayan bir anahtar daha derleme aşamasında hata veriyor:
+
+```ts title="global.d.ts"
+import type messages from "./messages/tr.json";
+
+declare module "next-intl" {
+  interface AppConfig {
+    Messages: typeof messages;
+  }
+}
+```
+
+## Tasarım tokenları
+
+Renk, tipografi ve köşe yarıçapları Tailwind v4 temasında token olarak tanımlı. Başlık boyutları `clamp()` ile ekran genişliğine göre akışkan büyüyüp küçülüyor. Bileşenler hiçbir zaman ham renk kodu kullanmıyor, her şey tokenlardan geliyor. Bu sayede koyu tema eklemek sadece token değerlerini değiştirmek anlamına geliyor.
+
+## MDX ile blog
+
+Yazılar repoda `content/blog/tr` ve `content/blog/en` klasörlerinde duruyor. Liste sayfası ve içindekiler tablosu için frontmatter'ı sunucuda okuyorum. Yazının kendisi ise `@next/mdx` ile derlenip build sırasında statik HTML'e dönüşüyor. Kod blokları Shiki ile renklendiriliyor ve bu da build sırasında yapıldığı için tarayıcıya ek JavaScript gitmiyor.
+
+## Sonuç
+
+Yeni yapıda bir yazı eklemek tek bir `.mdx` dosyası oluşturmak demek. Bir metni değiştirmek ise tek bir JSON anahtarını güncellemek. Geri kalanını (statik üretim, çeviri, yayın) altyapı hallediyor.

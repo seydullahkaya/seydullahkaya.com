@@ -7,7 +7,6 @@
     "whatsappMessage": "Merhaba Seydullah, web sitenden ulaşıyorum. Bir proje hakkında konuşmak istiyorum.",
     "whatsappCta": "WhatsApp'tan yaz",
     "language": "Dil",
-    "switchTo": "English",
     "localTimeCity": "İstanbul"
   },
   "Nav": {
@@ -15,9 +14,9 @@
     "mobileLabel": "Mobil menü",
     "menu": "Menü",
     "openMenu": "Menüyü aç",
-    "closeMenu": "Menüyü kapat",
     "about": "Hakkımda",
     "services": "Hizmetler",
+    "blog": "Blog",
     "contact": "İletişim"
   },
   "Hero": {
@@ -97,6 +96,17 @@
         ]
       }
     }
+  },
+  "Blog": {
+    "eyebrow": "Blog",
+    "title": "Notlar ve yazılar.",
+    "description": "Geliştirirken öğrendiklerim, verdiğim teknik kararlar ve nedenleri.",
+    "metaTitle": "Blog — Seydullah Kaya",
+    "minutesRead": "{minutes} dk okuma",
+    "allPosts": "Tüm yazılar",
+    "backToBlog": "Tüm yazılar",
+    "toc": "İçindekiler",
+    "empty": "Henüz yazı yok."
   },
   "Footer": {
     "title": "Birlikte bir şey inşa edelim.",

@@ -18,6 +18,7 @@ export function whatsappUrl(message: string) {
 export const navItems = [
   { href: "#about", key: "about" },
   { href: "#services", key: "services" },
+  { href: "/blog", key: "blog" },
   { href: "#contact", key: "contact" },
 ] as const;
 
