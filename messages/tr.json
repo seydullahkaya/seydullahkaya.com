@@ -1,0 +1,113 @@
+{
+  "Metadata": {
+    "title": "Seydullah Kaya — Freelance Yazılım Geliştirici",
+    "description": "Kurumsal web siteleri, web uygulamaları ve mobil uygulamalar geliştiren freelance yazılım geliştirici."
+  },
+  "Common": {
+    "whatsappMessage": "Merhaba Seydullah, web sitenden ulaşıyorum. Bir proje hakkında konuşmak istiyorum.",
+    "whatsappCta": "WhatsApp'tan yaz",
+    "language": "Dil",
+    "switchTo": "English",
+    "localTimeCity": "İstanbul"
+  },
+  "Nav": {
+    "label": "Ana menü",
+    "mobileLabel": "Mobil menü",
+    "menu": "Menü",
+    "openMenu": "Menüyü aç",
+    "closeMenu": "Menüyü kapat",
+    "about": "Hakkımda",
+    "services": "Hizmetler",
+    "contact": "İletişim"
+  },
+  "Hero": {
+    "badge": "Yeni projelere açığım",
+    "titleBefore": "İşinizi",
+    "titleHighlight": "büyüten",
+    "titleAfter": "web ve mobil ürünler geliştiriyorum.",
+    "description": "Ben Seydullah, bilgisayar mühendisi ve freelance yazılım geliştiriciyim. Kurumsal sitelerden web ve mobil uygulamalara kadar fikrinizi hızlı, güvenilir ve bakımı kolay ürünlere dönüştürüyorum.",
+    "primaryCta": "Hizmetlerime göz at",
+    "secondaryCta": "Teklif al",
+    "techLabel": "Kullandığım teknolojiler"
+  },
+  "About": {
+    "eyebrow": "Hakkımda",
+    "title": "Sağlam mühendislik, sade ürünler.",
+    "greeting": "Merhaba, ben Seydullah.",
+    "paragraphs": [
+      "Bilgisayar mühendisiyim ve işletmeler için web ve mobil ürünler geliştiriyorum. Bir projeye başlamadan önce işinizi ve kullanıcılarınızı anlarım; mimariyi ve teknolojiyi bu ihtiyaca göre seçerim.",
+      "Okunabilir, tip güvenli ve test edilebilir kod yazarım; performansı ve güvenliği en baştan hesaba katarım. Teslimattan sonra da yanınızda kalır, bakım ve yeni özelliklerle ürünün büyümeye devam etmesini sağlarım."
+    ],
+    "skillGroups": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "data": "Veri ve altyapı"
+    },
+    "locationLabel": "Konum",
+    "locationValue": "Türkiye · Uzaktan",
+    "workStyleLabel": "Çalışma şekli",
+    "workStyleValue": "Uzaktan · Hızlı dönüş",
+    "workStyleNote": "Mesajlarına genellikle 24 saat içinde dönüş yaparım.",
+    "learningLabel": "Şu sıralar öğreniyorum"
+  },
+  "Services": {
+    "eyebrow": "Hizmetler",
+    "title": "Fikirden yayına, uçtan uca geliştirme.",
+    "description": "İhtiyacınıza göre tek bir sayfadan kapsamlı bir uygulamaya kadar her aşamada destek veriyorum.",
+    "includesLabel": "Neler dahil",
+    "items": {
+      "website": {
+        "title": "Kurumsal web siteleri",
+        "description": "Markanızı doğru anlatan, hızlı açılan ve arama motorlarında bulunan modern web siteleri.",
+        "includes": [
+          "Mobil uyumlu tasarım",
+          "SEO altyapısı",
+          "İletişim formu",
+          "Çok dilli yapı"
+        ]
+      },
+      "webapp": {
+        "title": "Web uygulamaları",
+        "description": "Panel, rezervasyon, yönetim sistemi gibi işinize özel, ölçeklenebilir web uygulamaları.",
+        "includes": [
+          "Kullanıcı girişi ve yetkiler",
+          "Veritabanı ve API",
+          "Üçüncü parti entegrasyonlar",
+          "Yönetim paneli"
+        ]
+      },
+      "mobile": {
+        "title": "Mobil uygulamalar",
+        "description": "Tek kod tabanıyla hem iOS hem Android'de çalışan, akıcı mobil uygulamalar.",
+        "includes": [
+          "iOS ve Android (React Native)",
+          "Bildirimler",
+          "Web ile ortak altyapı",
+          "Mağaza yayın desteği"
+        ]
+      },
+      "maintenance": {
+        "title": "Bakım ve geliştirme",
+        "description": "Mevcut sitenizi veya uygulamanızı güncel, güvenli ve hızlı tutmak için düzenli destek.",
+        "includes": [
+          "Hata düzeltme",
+          "Yeni özellikler",
+          "Performans iyileştirme",
+          "Güvenlik güncellemeleri"
+        ]
+      }
+    }
+  },
+  "Footer": {
+    "title": "Birlikte bir şey inşa edelim.",
+    "description": "Aklında bir proje mi var? Kısaca anlat, en kısa sürede dönüş yapayım.",
+    "emailCta": "E-posta gönder",
+    "copyright": "Tüm hakları saklıdır."
+  },
+  "NotFound": {
+    "eyebrow": "404",
+    "title": "Aradığın sayfa bulunamadı.",
+    "description": "Sayfa taşınmış ya da hiç var olmamış olabilir.",
+    "cta": "Ana sayfaya dön"
+  }
+}

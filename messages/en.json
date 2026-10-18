@@ -1,0 +1,113 @@
+{
+  "Metadata": {
+    "title": "Seydullah Kaya — Freelance Software Developer",
+    "description": "Freelance software developer building business websites, web applications and mobile apps."
+  },
+  "Common": {
+    "whatsappMessage": "Hi Seydullah, I found you through your website. I'd like to talk about a project.",
+    "whatsappCta": "Message on WhatsApp",
+    "language": "Language",
+    "switchTo": "Türkçe",
+    "localTimeCity": "Istanbul"
+  },
+  "Nav": {
+    "label": "Main menu",
+    "mobileLabel": "Mobile menu",
+    "menu": "Menu",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "Hero": {
+    "badge": "Available for new projects",
+    "titleBefore": "I build web and mobile products that",
+    "titleHighlight": "grow",
+    "titleAfter": "your business.",
+    "description": "I'm Seydullah, a computer engineer and freelance software developer. From business websites to web and mobile apps, I turn your idea into fast, reliable and maintainable products.",
+    "primaryCta": "Explore my services",
+    "secondaryCta": "Get a quote",
+    "techLabel": "Technologies I work with"
+  },
+  "About": {
+    "eyebrow": "About",
+    "title": "Solid engineering, simple products.",
+    "greeting": "Hi, I'm Seydullah.",
+    "paragraphs": [
+      "I'm a computer engineer building web and mobile products for businesses. Before writing any code, I make sure I understand your business and your users, then choose the architecture and technology that fit those needs.",
+      "I write readable, type-safe and testable code, and I treat performance and security as requirements from day one. After launch I stay on board, keeping the product growing with maintenance and new features."
+    ],
+    "skillGroups": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "data": "Data & infrastructure"
+    },
+    "locationLabel": "Location",
+    "locationValue": "Türkiye · Remote",
+    "workStyleLabel": "How I work",
+    "workStyleValue": "Remote · Fast turnaround",
+    "workStyleNote": "I usually reply to messages within 24 hours.",
+    "learningLabel": "Currently learning"
+  },
+  "Services": {
+    "eyebrow": "Services",
+    "title": "From idea to launch, end to end.",
+    "description": "From a single landing page to a full-scale application, I support you at every stage.",
+    "includesLabel": "What's included",
+    "items": {
+      "website": {
+        "title": "Business websites",
+        "description": "Modern websites that tell your brand's story, load fast and get found on search engines.",
+        "includes": [
+          "Responsive design",
+          "SEO foundations",
+          "Contact form",
+          "Multilingual setup"
+        ]
+      },
+      "webapp": {
+        "title": "Web applications",
+        "description": "Scalable, custom web apps such as dashboards, booking and management systems.",
+        "includes": [
+          "Authentication and roles",
+          "Database and API",
+          "Third-party integrations",
+          "Admin panel"
+        ]
+      },
+      "mobile": {
+        "title": "Mobile apps",
+        "description": "Smooth mobile apps running on both iOS and Android from a single codebase.",
+        "includes": [
+          "iOS and Android (React Native)",
+          "Push notifications",
+          "Shared backend with web",
+          "App Store release support"
+        ]
+      },
+      "maintenance": {
+        "title": "Maintenance & development",
+        "description": "Ongoing support to keep your existing site or app up to date, secure and fast.",
+        "includes": [
+          "Bug fixes",
+          "New features",
+          "Performance tuning",
+          "Security updates"
+        ]
+      }
+    }
+  },
+  "Footer": {
+    "title": "Let's build something together.",
+    "description": "Have a project in mind? Tell me about it and I'll get back to you shortly.",
+    "emailCta": "Send an email",
+    "copyright": "All rights reserved."
+  },
+  "NotFound": {
+    "eyebrow": "404",
+    "title": "This page could not be found.",
+    "description": "It may have been moved, or it never existed.",
+    "cta": "Back to home"
+  }
+}

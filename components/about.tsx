@@ -1,16 +1,21 @@
 import { Clock, MapPin, Sparkles, Zap } from "lucide-react";
+import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 import { LocalTime } from "@/components/local-time";
 import { Reveal, RevealItem } from "@/components/motion";
 import { SectionHeading } from "@/components/section-heading";
 import { cn } from "@/lib/utils";
-import { about } from "@/lib/site";
+import { learning, skills } from "@/lib/site";
 
 export function About() {
+  const t = useTranslations("About");
+  const tCommon = useTranslations("Common");
+  const paragraphs = t.raw("paragraphs") as string[];
+
   return (
     <section id="about" className="section-y">
       <Reveal className="container-page">
-        <SectionHeading eyebrow={about.eyebrow} title={about.title} />
+        <SectionHeading eyebrow={t("eyebrow")} title={t("title")} />
 
         <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-6 lg:grid-rows-[auto_auto_auto]">
           {/* Büyük kart: tanıtım + profil */}
@@ -24,9 +29,9 @@ export function About() {
                 SK
               </div>
               <div>
-                <h3 className="text-h3">{about.greeting}</h3>
+                <h3 className="text-h3">{t("greeting")}</h3>
                 <div className="mt-4 space-y-4 text-muted-foreground">
-                  {about.paragraphs.map((p) => (
+                  {paragraphs.map((p) => (
                     <p key={p} className="max-w-[62ch] text-pretty">
                       {p}
                     </p>
@@ -38,38 +43,40 @@ export function About() {
 
           <BentoCard className="lg:col-span-2">
             <CardLabel icon={<MapPin className="size-3.5" />}>
-              {about.location.label}
+              {t("locationLabel")}
             </CardLabel>
-            <p className="mt-4 text-h3">{about.location.value}</p>
+            <p className="mt-4 text-h3">{t("locationValue")}</p>
             <p className="mt-auto flex items-center gap-2 pt-6 font-mono text-sm text-muted-foreground">
               <Clock className="size-3.5" aria-hidden="true" />
-              <LocalTime /> · İstanbul
+              <LocalTime /> · {tCommon("localTimeCity")}
             </p>
           </BentoCard>
 
           <BentoCard className="lg:col-span-2">
             <CardLabel icon={<Zap className="size-3.5" />}>
-              {about.workStyle.label}
+              {t("workStyleLabel")}
             </CardLabel>
-            <p className="mt-4 text-h3">{about.workStyle.value}</p>
+            <p className="mt-4 text-h3">{t("workStyleValue")}</p>
             <p className="mt-auto pt-6 text-sm text-muted-foreground">
-              {about.workStyle.note}
+              {t("workStyleNote")}
             </p>
           </BentoCard>
 
           {/* Teknoloji yığını */}
           <BentoCard className="md:col-span-2 lg:col-span-4">
             <div className="grid gap-6 sm:grid-cols-3">
-              {about.skills.map((s) => (
-                <div key={s.group}>
-                  <p className="eyebrow text-muted-foreground">{s.group}</p>
+              {skills.map((s) => (
+                <div key={s.key}>
+                  <p className="eyebrow text-muted-foreground">
+                    {t(`skillGroups.${s.key}`)}
+                  </p>
                   <ul className="mt-4 flex flex-wrap gap-2">
-                    {s.items.map((t) => (
+                    {s.items.map((item) => (
                       <li
-                        key={t}
+                        key={item}
                         className="rounded-full border border-border bg-background px-3 py-1 text-sm"
                       >
-                        {t}
+                        {item}
                       </li>
                     ))}
                   </ul>
@@ -80,15 +87,15 @@ export function About() {
 
           <BentoCard className="md:col-span-2 lg:col-span-2">
             <CardLabel icon={<Sparkles className="size-3.5" />}>
-              {about.learning.label}
+              {t("learningLabel")}
             </CardLabel>
             <ul className="mt-4 flex flex-wrap gap-2">
-              {about.learning.items.map((t) => (
+              {learning.map((item) => (
                 <li
-                  key={t}
+                  key={item}
                   className="rounded-full bg-accent-soft px-3 py-1 text-sm font-medium text-accent-foreground"
                 >
-                  {t}
+                  {item}
                 </li>
               ))}
             </ul>

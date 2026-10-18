@@ -1,15 +1,19 @@
 import { Mail } from "lucide-react";
+import { useTranslations } from "next-intl";
 import {
   GithubIcon,
   LinkedinIcon,
   WhatsappIcon,
 } from "@/components/brand-icons";
 import { CurrentYear } from "@/components/current-year";
+import { LanguageSwitcher } from "@/components/language-switcher";
 import { Reveal, RevealItem } from "@/components/motion";
 import { PillLink } from "@/components/pill-link";
-import { footer, site, whatsappUrl } from "@/lib/site";
+import { site, whatsappUrl } from "@/lib/site";
 
 export function SiteFooter() {
+  const t = useTranslations("Footer");
+  const tCommon = useTranslations("Common");
   const socials = [
     { href: site.github, label: "GitHub", Icon: GithubIcon },
     { href: site.linkedin, label: "LinkedIn", Icon: LinkedinIcon },
@@ -21,12 +25,12 @@ export function SiteFooter() {
       <Reveal className="container-page flex flex-col items-center section-y text-center">
         <RevealItem>
           <h2 className="max-w-[14ch] text-display text-balance">
-            {footer.title}
+            {t("title")}
           </h2>
         </RevealItem>
         <RevealItem>
           <p className="mt-6 max-w-[48ch] text-pretty text-muted-foreground md:text-lg">
-            {footer.description}
+            {t("description")}
           </p>
         </RevealItem>
         <RevealItem className="mt-9 flex w-full flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row">
@@ -37,10 +41,10 @@ export function SiteFooter() {
             className="w-full sm:w-auto"
           >
             <Mail className="size-4" aria-hidden="true" />
-            {footer.emailCta}
+            {t("emailCta")}
           </PillLink>
           <PillLink
-            href={whatsappUrl()}
+            href={whatsappUrl(tCommon("whatsappMessage"))}
             target="_blank"
             rel="noopener noreferrer"
             size="lg"
@@ -48,7 +52,7 @@ export function SiteFooter() {
             className="w-full sm:w-auto"
           >
             <WhatsappIcon className="size-4 text-whatsapp" />
-            {footer.whatsappCta}
+            {tCommon("whatsappCta")}
           </PillLink>
         </RevealItem>
       </Reveal>
@@ -56,7 +60,7 @@ export function SiteFooter() {
       <div className="border-t border-border">
         <div className="container-page flex flex-col-reverse items-center justify-between gap-4 pt-6 pb-24 text-sm text-muted-foreground sm:flex-row sm:pb-6">
           <p>
-            © <CurrentYear /> {site.name}. {footer.copyright}
+            © <CurrentYear /> {site.name}. {t("copyright")}
           </p>
           <div className="flex items-center gap-1 sm:mr-20">
             {socials.map(({ href, label, Icon }) => (
@@ -71,7 +75,7 @@ export function SiteFooter() {
                 <Icon className="size-4" />
               </a>
             ))}
-            {/* TODO (Aşama 3): dil seçici */}
+            <LanguageSwitcher className="ml-2" />
           </div>
         </div>
       </div>

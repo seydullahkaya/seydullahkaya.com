@@ -1,9 +1,10 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useTranslations } from "next-intl";
 import { Fragment } from "react";
 import { PillLink } from "@/components/pill-link";
-import { hero, techMarquee } from "@/lib/site";
+import { ctaHref, techMarquee } from "@/lib/site";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -16,10 +17,15 @@ function fadeUp(delay: number) {
 }
 
 export function Hero() {
+  const t = useTranslations("Hero");
   const words = [
-    ...hero.titleBefore.split(" ").map((w) => ({ w, hl: false })),
-    { w: hero.titleHighlight, hl: true },
-    ...hero.titleAfter.split(" ").map((w) => ({ w, hl: false })),
+    ...t("titleBefore")
+      .split(" ")
+      .map((w) => ({ w, hl: false })),
+    { w: t("titleHighlight"), hl: true },
+    ...t("titleAfter")
+      .split(" ")
+      .map((w) => ({ w, hl: false })),
   ];
   const afterTitle = 0.15 + words.length * 0.06;
 
@@ -39,7 +45,7 @@ export function Hero() {
             <span className="absolute inline-flex size-full animate-ping-slow rounded-full bg-success opacity-60" />
             <span className="relative inline-flex size-2 rounded-full bg-success" />
           </span>
-          {hero.badge}
+          {t("badge")}
         </motion.p>
 
         <h1 className="mt-7 max-w-[16ch] text-display text-balance">
@@ -62,7 +68,7 @@ export function Hero() {
           {...fadeUp(afterTitle)}
           className="mt-6 max-w-[58ch] text-pretty text-muted-foreground md:text-lg"
         >
-          {hero.description}
+          {t("description")}
         </motion.p>
 
         <motion.div
@@ -70,20 +76,20 @@ export function Hero() {
           className="mt-9 flex w-full flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row"
         >
           <PillLink
-            href={hero.primaryCta.href}
+            href={ctaHref.services}
             size="lg"
             arrow
             className="w-full sm:w-auto"
           >
-            {hero.primaryCta.label}
+            {t("primaryCta")}
           </PillLink>
           <PillLink
-            href={hero.secondaryCta.href}
+            href={ctaHref.contact}
             size="lg"
             variant="outline"
             className="w-full sm:w-auto"
           >
-            {hero.secondaryCta.label}
+            {t("secondaryCta")}
           </PillLink>
         </motion.div>
       </div>
@@ -94,7 +100,7 @@ export function Hero() {
         transition={{ duration: 0.8, delay: afterTitle + 0.3 }}
         className="mt-20 md:mt-28"
       >
-        <TechMarquee />
+        <TechMarquee label={t("techLabel")} />
       </motion.div>
     </section>
   );
@@ -114,13 +120,13 @@ function HeroBackground() {
   );
 }
 
-function TechMarquee() {
+function TechMarquee({ label }: { label: string }) {
   // Kesintisiz kayma için liste iki kez yan yana
   const row = [...techMarquee, ...techMarquee];
   return (
     <div className="group relative [mask-image:linear-gradient(to_right,transparent,#000_12%,#000_88%,transparent)]">
       <p className="sr-only">
-        Kullandığım teknolojiler: {techMarquee.join(", ")}
+        {label}: {techMarquee.join(", ")}
       </p>
       <ul
         aria-hidden="true"
