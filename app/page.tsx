@@ -1,15 +1,21 @@
+import { About } from "@/components/about";
+import { Hero } from "@/components/hero";
+import { Services } from "@/components/services";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
+import { WhatsappButton } from "@/components/whatsapp-button";
+
 export default function Home() {
   return (
-    <main className="flex flex-1 flex-col items-center justify-center gap-4 px-4 text-center">
-      <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-        Yapım aşamasında
-      </p>
-      <h1 className="text-4xl font-semibold tracking-tight sm:text-6xl">
-        Seydullah Kaya
-      </h1>
-      <p className="max-w-md text-muted-foreground">
-        Yeni site çok yakında burada.
-      </p>
-    </main>
+    <>
+      <SiteHeader />
+      <main className="flex-1">
+        <Hero />
+        <About />
+        <Services />
+      </main>
+      <SiteFooter />
+      <WhatsappButton />
+    </>
   );
 }
