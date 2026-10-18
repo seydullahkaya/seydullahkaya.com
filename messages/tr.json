@@ -108,6 +108,52 @@
     "toc": "İçindekiler",
     "empty": "Henüz yazı yok."
   },
+  "Contact": {
+    "eyebrow": "İletişim",
+    "title": "Projeni konuşalım.",
+    "description": "Kısaca ne yapmak istediğini anlat, sana en geç 24 saat içinde dönüş yapayım. İstersen doğrudan e-posta ya da WhatsApp'tan da yazabilirsin.",
+    "emailLabel": "E-posta",
+    "whatsappLabel": "WhatsApp",
+    "whatsappValue": "Hızlı mesaj gönder",
+    "locationLabel": "Konum",
+    "locationValue": "Türkiye · Uzaktan çalışıyorum",
+    "form": {
+      "name": "Ad soyad",
+      "namePlaceholder": "Adın ve soyadın",
+      "email": "E-posta",
+      "emailPlaceholder": "ornek@mail.com",
+      "topic": "Konu",
+      "message": "Mesaj",
+      "messagePlaceholder": "Projenden, hedeflerinden ve varsa zaman planından bahset.",
+      "submit": "Mesajı gönder",
+      "sending": "Gönderiliyor…",
+      "privacy": "Bilgilerin sadece sana dönüş yapmak için kullanılır.",
+      "honeypot": "Bu alanı boş bırak"
+    },
+    "topics": {
+      "website": "Web sitesi",
+      "webapp": "Web uygulaması",
+      "mobile": "Mobil uygulama",
+      "other": "Diğer"
+    },
+    "errors": {
+      "nameRequired": "Adını yaz (en az 2 karakter).",
+      "nameTooLong": "Ad en fazla 80 karakter olabilir.",
+      "nameInvalid": "Ad tek satır olmalı.",
+      "emailInvalid": "Geçerli bir e-posta adresi yaz.",
+      "topicRequired": "Bir konu seç.",
+      "messageTooShort": "Mesaj en az 10 karakter olmalı.",
+      "messageTooLong": "Mesaj en fazla 4000 karakter olabilir."
+    },
+    "toast": {
+      "successTitle": "Mesajın ulaştı!",
+      "successBody": "En kısa sürede sana dönüş yapacağım.",
+      "validation": "Formdaki hataları düzeltip tekrar dene.",
+      "spam": "Doğrulama başarısız oldu. Sayfayı yenileyip tekrar dene.",
+      "rateLimited": "Çok fazla deneme yapıldı. Birkaç dakika sonra tekrar dene.",
+      "server": "Mesaj gönderilemedi. Lütfen doğrudan e-posta ile ulaş."
+    }
+  },
   "Footer": {
     "title": "Birlikte bir şey inşa edelim.",
     "description": "Aklında bir proje mi var? Kısaca anlat, en kısa sürede dönüş yapayım.",

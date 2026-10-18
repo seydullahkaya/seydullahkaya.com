@@ -20,8 +20,7 @@ export function SiteFooter() {
   ].filter((s) => s.href);
 
   return (
-    // id="contact": Aşama 5'te iletişim formu bölümü gelene kadar CTA buraya yönlenir
-    <footer id="contact" className="border-t border-border bg-card">
+    <footer className="border-t border-border bg-card">
       <Reveal className="container-page flex flex-col items-center section-y text-center">
         <RevealItem>
           <h2 className="max-w-[14ch] text-display text-balance">

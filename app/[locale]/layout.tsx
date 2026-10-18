@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { MotionProvider } from "@/components/motion";
+import { Toaster } from "@/components/ui/sonner";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 
@@ -56,6 +57,7 @@ export default async function LocaleLayout({
       <body className="flex min-h-full flex-col">
         <NextIntlClientProvider>
           <MotionProvider>{children}</MotionProvider>
+          <Toaster position="bottom-center" />
         </NextIntlClientProvider>
       </body>
     </html>

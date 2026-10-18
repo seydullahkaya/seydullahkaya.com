@@ -108,6 +108,52 @@
     "toc": "On this page",
     "empty": "No posts yet."
   },
+  "Contact": {
+    "eyebrow": "Contact",
+    "title": "Let's talk about your project.",
+    "description": "Tell me briefly what you want to build and I'll get back to you within 24 hours. You can also email me directly or message me on WhatsApp.",
+    "emailLabel": "Email",
+    "whatsappLabel": "WhatsApp",
+    "whatsappValue": "Send a quick message",
+    "locationLabel": "Location",
+    "locationValue": "Türkiye · Working remotely",
+    "form": {
+      "name": "Full name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "topic": "Topic",
+      "message": "Message",
+      "messagePlaceholder": "Tell me about your project, your goals and your timeline if you have one.",
+      "submit": "Send message",
+      "sending": "Sending…",
+      "privacy": "Your details are only used to get back to you.",
+      "honeypot": "Leave this field empty"
+    },
+    "topics": {
+      "website": "Website",
+      "webapp": "Web app",
+      "mobile": "Mobile app",
+      "other": "Other"
+    },
+    "errors": {
+      "nameRequired": "Enter your name (at least 2 characters).",
+      "nameTooLong": "Name can be at most 80 characters.",
+      "nameInvalid": "Name must be a single line.",
+      "emailInvalid": "Enter a valid email address.",
+      "topicRequired": "Pick a topic.",
+      "messageTooShort": "Message must be at least 10 characters.",
+      "messageTooLong": "Message can be at most 4000 characters."
+    },
+    "toast": {
+      "successTitle": "Message received!",
+      "successBody": "I'll get back to you shortly.",
+      "validation": "Please fix the errors in the form and try again.",
+      "spam": "Verification failed. Refresh the page and try again.",
+      "rateLimited": "Too many attempts. Please try again in a few minutes.",
+      "server": "Your message couldn't be sent. Please reach out by email instead."
+    }
+  },
   "Footer": {
     "title": "Let's build something together.",
     "description": "Have a project in mind? Tell me about it and I'll get back to you shortly.",

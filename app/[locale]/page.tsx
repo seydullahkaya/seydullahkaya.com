@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
 import { About } from "@/components/about";
 import { BlogSection } from "@/components/blog/blog-section";
+import { ContactSection } from "@/components/contact/contact-section";
 import { Hero } from "@/components/hero";
 import { Services } from "@/components/services";
 import { SiteFooter } from "@/components/site-footer";
@@ -21,6 +22,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
         <About />
         <Services />
         <BlogSection locale={locale} />
+        <ContactSection />
       </main>
       <SiteFooter />
       <WhatsappButton />
