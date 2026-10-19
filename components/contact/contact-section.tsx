@@ -13,38 +13,40 @@ export function ContactSection() {
 
   return (
     <section id="contact" className="border-t border-border/60 section-y">
-      <Reveal className="container-page grid gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
-        <div>
+      {/* Mobilde sıra: başlık → form → kartlar. Masaüstünde form sağda, iki satır boyunca. */}
+      <Reveal className="container-page grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:grid-rows-[auto_1fr] lg:gap-x-16 lg:gap-y-10">
+        <div className="lg:col-start-1 lg:row-start-1">
           <SectionHeading
             eyebrow={t("eyebrow")}
             title={t("title")}
             description={t("description")}
           />
-          <ul className="mt-10 grid gap-3">
-            <InfoCard
-              href={`mailto:${site.email}`}
-              icon={<Mail className="size-4" />}
-              label={t("emailLabel")}
-              value={site.email}
-            />
-            <InfoCard
-              href={whatsappUrl(tCommon("whatsappMessage"))}
-              external
-              icon={<WhatsappIcon className="size-4 text-whatsapp" />}
-              label={t("whatsappLabel")}
-              value={t("whatsappValue")}
-            />
-            <InfoCard
-              icon={<MapPin className="size-4" />}
-              label={t("locationLabel")}
-              value={t("locationValue")}
-            />
-          </ul>
         </div>
 
-        <RevealItem>
+        <RevealItem className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
           <ContactForm />
         </RevealItem>
+
+        <ul className="grid content-start gap-3 lg:col-start-1 lg:row-start-2">
+          <InfoCard
+            href={`mailto:${site.email}`}
+            icon={<Mail className="size-4" />}
+            label={t("emailLabel")}
+            value={site.email}
+          />
+          <InfoCard
+            href={whatsappUrl(tCommon("whatsappMessage"))}
+            external
+            icon={<WhatsappIcon className="size-4 text-whatsapp" />}
+            label={t("whatsappLabel")}
+            value={t("whatsappValue")}
+          />
+          <InfoCard
+            icon={<MapPin className="size-4" />}
+            label={t("locationLabel")}
+            value={t("locationValue")}
+          />
+        </ul>
       </Reveal>
     </section>
   );

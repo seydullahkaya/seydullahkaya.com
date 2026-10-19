@@ -1,5 +1,4 @@
-import { Mail } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import {
   GithubIcon,
   LinkedinIcon,
@@ -9,11 +8,15 @@ import { CurrentYear } from "@/components/current-year";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { Reveal, RevealItem } from "@/components/motion";
 import { PillLink } from "@/components/pill-link";
-import { site, whatsappUrl } from "@/lib/site";
+import { getPathname } from "@/i18n/navigation";
+import { ctaHref, site, whatsappUrl } from "@/lib/site";
 
 export function SiteFooter() {
   const t = useTranslations("Footer");
   const tCommon = useTranslations("Common");
+  const tHero = useTranslations("Hero");
+  // Form ana sayfadaki #contact bölümünde; blog sayfalarından da oraya gider
+  const contactHref = `${getPathname({ href: "/", locale: useLocale() })}${ctaHref.contact}`;
   const socials = [
     { href: site.github, label: "GitHub", Icon: GithubIcon },
     { href: site.linkedin, label: "LinkedIn", Icon: LinkedinIcon },
@@ -34,13 +37,12 @@ export function SiteFooter() {
         </RevealItem>
         <RevealItem className="mt-9 flex w-full flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row">
           <PillLink
-            href={`mailto:${site.email}`}
+            href={contactHref}
             size="lg"
             arrow
             className="w-full sm:w-auto"
           >
-            <Mail className="size-4" aria-hidden="true" />
-            {t("emailCta")}
+            {tHero("secondaryCta")}
           </PillLink>
           <PillLink
             href={whatsappUrl(tCommon("whatsappMessage"))}
@@ -53,6 +55,17 @@ export function SiteFooter() {
             <WhatsappIcon className="size-4 text-whatsapp" />
             {tCommon("whatsappCta")}
           </PillLink>
+        </RevealItem>
+        <RevealItem>
+          <p className="mt-6 text-sm text-muted-foreground">
+            {t("emailPrefix")}{" "}
+            <a
+              href={`mailto:${site.email}`}
+              className="font-medium text-foreground underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground"
+            >
+              {site.email}
+            </a>
+          </p>
         </RevealItem>
       </Reveal>
 

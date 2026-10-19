@@ -158,7 +158,7 @@
   "Footer": {
     "title": "Birlikte bir şey inşa edelim.",
     "description": "Aklında bir proje mi var? Kısaca anlat, en kısa sürede dönüş yapayım.",
-    "emailCta": "E-posta gönder",
+    "emailPrefix": "ya da doğrudan e-posta:",
     "copyright": "Tüm hakları saklıdır."
   },
   "NotFound": {

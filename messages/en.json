@@ -158,7 +158,7 @@
   "Footer": {
     "title": "Let's build something together.",
     "description": "Have a project in mind? Tell me about it and I'll get back to you shortly.",
-    "emailCta": "Send an email",
+    "emailPrefix": "or email me directly:",
     "copyright": "All rights reserved."
   },
   "NotFound": {
