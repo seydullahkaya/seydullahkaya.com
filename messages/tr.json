@@ -1,7 +1,7 @@
 {
   "Metadata": {
-    "title": "Seydullah Kaya — Freelance Yazılım Geliştirici",
-    "description": "Kurumsal web siteleri, web uygulamaları ve mobil uygulamalar geliştiren freelance yazılım geliştirici."
+    "title": "Kahramanmaraş Yazılım Geliştirici | Seydullah Kaya",
+    "description": "Kahramanmaraş merkezli bilgisayar mühendisi. Maraş'taki ve Türkiye genelindeki işletmeler için kurumsal web sitesi, web uygulaması ve mobil uygulama geliştiriyorum."
   },
   "Common": {
     "whatsappMessage": "Merhaba Seydullah, web sitenden ulaşıyorum. Bir proje hakkında konuşmak istiyorum.",
@@ -24,7 +24,7 @@
     "titleBefore": "İşinizi",
     "titleHighlight": "büyüten",
     "titleAfter": "web ve mobil ürünler geliştiriyorum.",
-    "description": "Ben Seydullah, bilgisayar mühendisi ve freelance yazılım geliştiriciyim. Kurumsal sitelerden web ve mobil uygulamalara kadar fikrinizi hızlı, güvenilir ve bakımı kolay ürünlere dönüştürüyorum.",
+    "description": "Ben Seydullah, Kahramanmaraş merkezli bilgisayar mühendisi ve freelance yazılım geliştiriciyim. Kurumsal sitelerden web ve mobil uygulamalara kadar fikrinizi hızlı, güvenilir ve bakımı kolay ürünlere dönüştürüyorum.",
     "primaryCta": "Hizmetlerime göz at",
     "secondaryCta": "Teklif al",
     "techLabel": "Kullandığım teknolojiler"
@@ -34,7 +34,7 @@
     "title": "Sağlam mühendislik, sade ürünler.",
     "greeting": "Merhaba, ben Seydullah.",
     "paragraphs": [
-      "Bilgisayar mühendisiyim ve işletmeler için web ve mobil ürünler geliştiriyorum. Bir projeye başlamadan önce işinizi ve kullanıcılarınızı anlarım; mimariyi ve teknolojiyi bu ihtiyaca göre seçerim.",
+      "Kahramanmaraş merkezli bir bilgisayar mühendisiyim; Maraş'taki ve Türkiye genelindeki işletmeler için web ve mobil ürünler geliştiriyorum. Bir projeye başlamadan önce işinizi ve kullanıcılarınızı anlarım; mimariyi ve teknolojiyi bu ihtiyaca göre seçerim.",
       "Okunabilir, tip güvenli ve test edilebilir kod yazarım; performansı ve güvenliği en baştan hesaba katarım. Teslimattan sonra da yanınızda kalır, bakım ve yeni özelliklerle ürünün büyümeye devam etmesini sağlarım."
     ],
     "skillGroups": {
@@ -43,7 +43,7 @@
       "data": "Veri ve altyapı"
     },
     "locationLabel": "Konum",
-    "locationValue": "Türkiye · Uzaktan",
+    "locationValue": "Kahramanmaraş · Türkiye geneli",
     "workStyleLabel": "Çalışma şekli",
     "workStyleValue": "Uzaktan · Hızlı dönüş",
     "workStyleNote": "Mesajlarına genellikle 24 saat içinde dönüş yaparım.",
@@ -116,7 +116,7 @@
     "whatsappLabel": "WhatsApp",
     "whatsappValue": "Hızlı mesaj gönder",
     "locationLabel": "Konum",
-    "locationValue": "Türkiye · Uzaktan çalışıyorum",
+    "locationValue": "Kahramanmaraş · Türkiye geneline hizmet",
     "form": {
       "name": "Ad soyad",
       "namePlaceholder": "Adın ve soyadın",

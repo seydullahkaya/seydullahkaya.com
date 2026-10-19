@@ -1,7 +1,7 @@
 {
   "Metadata": {
-    "title": "Seydullah Kaya — Freelance Software Developer",
-    "description": "Freelance software developer building business websites, web applications and mobile apps."
+    "title": "Software Developer in Kahramanmaraş, Türkiye | Seydullah Kaya",
+    "description": "Computer engineer based in Kahramanmaraş, Türkiye, building business websites, web applications and mobile apps for companies in Kahramanmaraş and beyond."
   },
   "Common": {
     "whatsappMessage": "Hi Seydullah, I found you through your website. I'd like to talk about a project.",
@@ -24,7 +24,7 @@
     "titleBefore": "I build web and mobile products that",
     "titleHighlight": "grow",
     "titleAfter": "your business.",
-    "description": "I'm Seydullah, a computer engineer and freelance software developer. From business websites to web and mobile apps, I turn your idea into fast, reliable and maintainable products.",
+    "description": "I'm Seydullah, a computer engineer and freelance software developer based in Kahramanmaraş, Türkiye. From business websites to web and mobile apps, I turn your idea into fast, reliable and maintainable products.",
     "primaryCta": "Explore my services",
     "secondaryCta": "Get a quote",
     "techLabel": "Technologies I work with"
@@ -34,7 +34,7 @@
     "title": "Solid engineering, simple products.",
     "greeting": "Hi, I'm Seydullah.",
     "paragraphs": [
-      "I'm a computer engineer building web and mobile products for businesses. Before writing any code, I make sure I understand your business and your users, then choose the architecture and technology that fit those needs.",
+      "I'm a computer engineer based in Kahramanmaraş, building web and mobile products for businesses in Kahramanmaraş and across Türkiye. Before writing any code, I make sure I understand your business and your users, then choose the architecture and technology that fit those needs.",
       "I write readable, type-safe and testable code, and I treat performance and security as requirements from day one. After launch I stay on board, keeping the product growing with maintenance and new features."
     ],
     "skillGroups": {
@@ -43,7 +43,7 @@
       "data": "Data & infrastructure"
     },
     "locationLabel": "Location",
-    "locationValue": "Türkiye · Remote",
+    "locationValue": "Kahramanmaraş · Serving all of Türkiye",
     "workStyleLabel": "How I work",
     "workStyleValue": "Remote · Fast turnaround",
     "workStyleNote": "I usually reply to messages within 24 hours.",
@@ -116,7 +116,7 @@
     "whatsappLabel": "WhatsApp",
     "whatsappValue": "Send a quick message",
     "locationLabel": "Location",
-    "locationValue": "Türkiye · Working remotely",
+    "locationValue": "Kahramanmaraş · Working with clients everywhere",
     "form": {
       "name": "Full name",
       "namePlaceholder": "Your name",

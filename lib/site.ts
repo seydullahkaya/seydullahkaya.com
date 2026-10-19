@@ -6,11 +6,22 @@ export const site = {
   email: "seydullahkaya@gmail.com",
   // TODO: WhatsApp numarası (ülke koduyla, boşluksuz: 905xxxxxxxxx)
   whatsappNumber: "",
-  github: "https://github.com/seydullahkaya",
-  // TODO: LinkedIn profil linki
-  linkedin: "",
   timeZone: "Europe/Istanbul",
+  // Yerel SEO (JSON-LD) için konum
+  city: "Kahramanmaraş",
+  countryCode: "TR",
+  // Sosyal hesaplar: boş olanlar sitede gösterilmez
+  socials: {
+    github: "https://github.com/seydullahkaya",
+    linkedin: "https://www.linkedin.com/in/seydullah-kaya-1b155116b/",
+    x: "https://x.com/seydullahkaya",
+    youtube: "https://www.youtube.com/@seydullahkaya",
+  },
 } as const;
+
+export const socialLinks = Object.entries(site.socials)
+  .filter(([, href]) => href)
+  .map(([key, href]) => ({ key: key as keyof typeof site.socials, href }));
 
 export function whatsappUrl(message: string) {
   return `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(message)}`;

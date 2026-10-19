@@ -3,13 +3,22 @@ import {
   GithubIcon,
   LinkedinIcon,
   WhatsappIcon,
+  XIcon,
+  YoutubeIcon,
 } from "@/components/brand-icons";
 import { CurrentYear } from "@/components/current-year";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { Reveal, RevealItem } from "@/components/motion";
 import { PillLink } from "@/components/pill-link";
 import { getPathname } from "@/i18n/navigation";
-import { ctaHref, site, whatsappUrl } from "@/lib/site";
+import { ctaHref, site, socialLinks, whatsappUrl } from "@/lib/site";
+
+const socialMeta = {
+  github: { label: "GitHub", Icon: GithubIcon },
+  linkedin: { label: "LinkedIn", Icon: LinkedinIcon },
+  x: { label: "X", Icon: XIcon },
+  youtube: { label: "YouTube", Icon: YoutubeIcon },
+} as const;
 
 export function SiteFooter() {
   const t = useTranslations("Footer");
@@ -17,10 +26,10 @@ export function SiteFooter() {
   const tHero = useTranslations("Hero");
   // Form ana sayfadaki #contact bölümünde; blog sayfalarından da oraya gider
   const contactHref = `${getPathname({ href: "/", locale: useLocale() })}${ctaHref.contact}`;
-  const socials = [
-    { href: site.github, label: "GitHub", Icon: GithubIcon },
-    { href: site.linkedin, label: "LinkedIn", Icon: LinkedinIcon },
-  ].filter((s) => s.href);
+  const socials = socialLinks.map(({ key, href }) => ({
+    href,
+    ...socialMeta[key],
+  }));
 
   return (
     <footer className="border-t border-border bg-card">
