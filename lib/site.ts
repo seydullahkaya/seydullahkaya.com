@@ -3,6 +3,8 @@
 export const site = {
   name: "Seydullah Kaya",
   url: "https://seydullahkaya.com",
+  // Profil fotoğrafı (512×512, public/images)
+  photo: "/images/seydullah.jpg",
   email: "seydullahkaya@gmail.com",
   // wa.me formatı: ülke koduyla, "+" ve boşluk olmadan
   whatsappNumber: "905071621061",

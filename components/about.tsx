@@ -1,11 +1,12 @@
 import { Clock, MapPin, Sparkles, Zap } from "lucide-react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 import { LocalTime } from "@/components/local-time";
 import { Reveal, RevealItem } from "@/components/motion";
 import { SectionHeading } from "@/components/section-heading";
 import { cn } from "@/lib/utils";
-import { learning, skills } from "@/lib/site";
+import { learning, site, skills } from "@/lib/site";
 
 export function About() {
   const t = useTranslations("About");
@@ -21,12 +22,16 @@ export function About() {
           {/* Büyük kart: tanıtım + profil */}
           <BentoCard className="md:col-span-2 lg:col-span-4 lg:row-span-2">
             <div className="flex h-full flex-col gap-8 sm:flex-row sm:items-start">
-              {/* TODO: Profil fotoğrafı (PROJE_1.md Bölüm 9) */}
-              <div
-                aria-hidden="true"
-                className="grid size-20 shrink-0 place-items-center rounded-2xl bg-[linear-gradient(135deg,var(--nebula-indigo),var(--nebula-purple)_55%,#c026d3)] text-2xl font-semibold tracking-tight text-white shadow-[0_8px_30px_-8px_rgb(124_58_237/0.7)] shadow-[inset_0_1px_0_rgb(255_255_255/0.25)] sm:size-24"
-              >
-                SK
+              {/* Profil fotoğrafı: nebula gradyanlı çerçeve */}
+              <div className="size-24 shrink-0 rounded-2xl bg-[linear-gradient(135deg,var(--nebula-cyan),var(--nebula-violet)_50%,var(--nebula-pink))] p-[2px] shadow-[0_10px_40px_-10px_rgb(124_92_255/0.8)] sm:size-32">
+                <Image
+                  src={site.photo}
+                  alt={site.name}
+                  width={128}
+                  height={128}
+                  sizes="(min-width: 640px) 128px, 96px"
+                  className="size-full rounded-[14px] object-cover"
+                />
               </div>
               <div>
                 <h3 className="text-h3">{t("greeting")}</h3>

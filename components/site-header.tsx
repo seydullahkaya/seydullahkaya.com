@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { LanguageSwitcher } from "@/components/language-switcher";
@@ -40,12 +41,14 @@ export function SiteHeader() {
           href={`${home}#top`}
           className="flex items-center gap-2.5 rounded-full font-semibold tracking-tight outline-none focus-visible:ring-3 focus-visible:ring-ring/40"
         >
-          <span
-            aria-hidden="true"
-            className="grid size-8 place-items-center rounded-full bg-foreground font-mono text-[0.7rem] text-background"
-          >
-            SK
-          </span>
+          <Image
+            src={site.photo}
+            alt=""
+            width={32}
+            height={32}
+            priority
+            className="size-8 rounded-full object-cover ring-1 ring-white/25"
+          />
           <span className="sr-only sm:not-sr-only">{site.name}</span>
         </a>
 

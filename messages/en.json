@@ -142,7 +142,8 @@
       "submit": "Send message",
       "sending": "Sending…",
       "privacy": "Your details are only used to get back to you.",
-      "honeypot": "Leave this field empty"
+      "honeypot": "Leave this field empty",
+      "captchaUnavailable": "The verification couldn't load (an ad blocker may be blocking Cloudflare). Refresh the page or reach me by email or WhatsApp."
     },
     "topics": {
       "website": "Website",
@@ -163,7 +164,7 @@
       "successTitle": "Message received!",
       "successBody": "I'll get back to you shortly.",
       "validation": "Please fix the errors in the form and try again.",
-      "captcha": "Please complete the \"Verify you are human\" check before sending.",
+      "captcha": "Please complete the \"Verify you are human\" check before sending. If you can't see it, reach me by email or WhatsApp.",
       "spam": "Verification failed. Refresh the page and try again.",
       "rateLimited": "Too many attempts. Please try again in a few minutes.",
       "server": "Your message couldn't be sent. Please reach out by email instead."

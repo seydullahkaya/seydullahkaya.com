@@ -21,6 +21,9 @@ const stars =
   "radial-gradient(circle at 43% 21%, rgba(255,255,255,0.57) 0, rgba(255,255,255,0) 1px), radial-gradient(circle at 11% 70%, rgba(255,255,255,0.4) 0, rgba(255,255,255,0) 2px), radial-gradient(circle at 9% 66%, rgba(255,255,255,0.47) 0, rgba(255,255,255,0) 1px), radial-gradient(circle at 57% 55%, rgba(255,255,255,0.39) 0, rgba(255,255,255,0) 1px), radial-gradient(circle at 72% 56%, rgba(255,255,255,0.38) 0, rgba(255,255,255,0) 2px), radial-gradient(circle at 17% 30%, rgba(255,255,255,0.7) 0, rgba(255,255,255,0) 2px), radial-gradient(circle at 9% 75%, rgba(255,255,255,0.67) 0, rgba(255,255,255,0) 1px), radial-gradient(circle at 30% 7%, rgba(255,255,255,0.66) 0, rgba(255,255,255,0) 1px), radial-gradient(circle at 39% 55%, rgba(255,255,255,0.43) 0, rgba(255,255,255,0) 1px), radial-gradient(circle at 75% 41%, rgba(255,255,255,0.66) 0, rgba(255,255,255,0) 2px), radial-gradient(circle at 25% 15%, rgba(255,255,255,0.67) 0, rgba(255,255,255,0) 2px), radial-gradient(circle at 26% 49%, rgba(255,255,255,0.4) 0, rgba(255,255,255,0) 2px), radial-gradient(circle at 10% 74%, rgba(255,255,255,0.38) 0, rgba(255,255,255,0) 1px), radial-gradient(circle at 65% 89%, rgba(255,255,255,0.64) 0, rgba(255,255,255,0) 1px), radial-gradient(circle at 61% 76%, rgba(255,255,255,0.86) 0, rgba(255,255,255,0) 1px), radial-gradient(circle at 40% 33%, rgba(255,255,255,0.79) 0, rgba(255,255,255,0) 2px), radial-gradient(circle at 33% 12%, rgba(255,255,255,0.67) 0, rgba(255,255,255,0) 2px), radial-gradient(circle at 65% 45%, rgba(255,255,255,0.75) 0, rgba(255,255,255,0) 1px), radial-gradient(circle at 79% 11%, rgba(255,255,255,0.41) 0, rgba(255,255,255,0) 1px), radial-gradient(circle at 23% 98%, rgba(255,255,255,0.54) 0, rgba(255,255,255,0) 1px), radial-gradient(circle at 55% 7%, rgba(255,255,255,0.88) 0, rgba(255,255,255,0) 1px), radial-gradient(circle at 73% 75%, rgba(255,255,255,0.78) 0, rgba(255,255,255,0) 1px), radial-gradient(circle at 45% 90%, rgba(255,255,255,0.54) 0, rgba(255,255,255,0) 1px), radial-gradient(circle at 76% 60%, rgba(255,255,255,0.39) 0, rgba(255,255,255,0) 1px)";
 
 const fontsDir = join(process.cwd(), "assets", "fonts");
+const photo = readFile(
+  join(process.cwd(), "public", "images", "seydullah.jpg"),
+).then((buf) => `data:image/jpeg;base64,${buf.toString("base64")}`);
 const fonts = Promise.all([
   readFile(join(fontsDir, "Geist-Regular.ttf")),
   readFile(join(fontsDir, "Geist-SemiBold.ttf")),
@@ -39,7 +42,10 @@ export async function renderOgImage({
   description?: string;
   badge?: string;
 }) {
-  const [regular, semibold, mono] = await fonts;
+  const [[regular, semibold, mono], photoSrc] = await Promise.all([
+    fonts,
+    photo,
+  ]);
 
   return new ImageResponse(
     <div
@@ -57,22 +63,14 @@ export async function renderOgImage({
       }}
     >
       <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            width: 52,
-            height: 52,
-            borderRadius: 999,
-            background: color.foreground,
-            color: color.background,
-            fontFamily: "Geist Mono",
-            fontSize: 20,
-          }}
-        >
-          SK
-        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element -- satori için <img> gerekir */}
+        <img
+          src={photoSrc}
+          alt=""
+          width={60}
+          height={60}
+          style={{ borderRadius: 999, border: `2px solid ${color.accent}` }}
+        />
         <div
           style={{ fontSize: 28, fontWeight: 600, letterSpacing: "-0.02em" }}
         >

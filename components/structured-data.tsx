@@ -28,6 +28,7 @@ export async function StructuredData({ locale }: { locale: Locale }) {
         name: site.name,
         url: site.url,
         email: `mailto:${site.email}`,
+        image: `${site.url}${site.photo}`,
         jobTitle:
           locale === "tr"
             ? "Bilgisayar Mühendisi, Yazılım Geliştirici"

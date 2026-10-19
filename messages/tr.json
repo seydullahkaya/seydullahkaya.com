@@ -142,7 +142,8 @@
       "submit": "Mesajı gönder",
       "sending": "Gönderiliyor…",
       "privacy": "Bilgilerin sadece sana dönüş yapmak için kullanılır.",
-      "honeypot": "Bu alanı boş bırak"
+      "honeypot": "Bu alanı boş bırak",
+      "captchaUnavailable": "Doğrulama yüklenemedi (bir reklam engelleyici Cloudflare'i engelliyor olabilir). Sayfayı yenile ya da bana e-posta veya WhatsApp'tan ulaş."
     },
     "topics": {
       "website": "Web sitesi",
@@ -163,7 +164,7 @@
       "successTitle": "Mesajın ulaştı!",
       "successBody": "En kısa sürede sana dönüş yapacağım.",
       "validation": "Formdaki hataları düzeltip tekrar dene.",
-      "captcha": "Göndermeden önce \"Gerçek kişi olduğunuzu doğrulayın\" adımını tamamla.",
+      "captcha": "Göndermeden önce \"Gerçek kişi olduğunuzu doğrulayın\" adımını tamamla. Doğrulama kutusu görünmüyorsa bana e-posta ya da WhatsApp'tan ulaşabilirsin.",
       "spam": "Doğrulama başarısız oldu. Sayfayı yenileyip tekrar dene.",
       "rateLimited": "Çok fazla deneme yapıldı. Birkaç dakika sonra tekrar dene.",
       "server": "Mesaj gönderilemedi. Lütfen doğrudan e-posta ile ulaş."

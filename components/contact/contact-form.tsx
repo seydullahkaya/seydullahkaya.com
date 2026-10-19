@@ -60,6 +60,8 @@ export function ContactForm() {
   const turnstileRef = useRef<TurnstileInstance>(null);
   // Doğrulama tamamlanmadan gönderim yapılmasın (boş token sunucuda reddedilir)
   const [verified, setVerified] = useState(!turnstileSiteKey);
+  // Turnstile yüklenemezse (ör. reklam engelleyici) kullanıcı alternatif yola yönlendirilir
+  const [captchaFailed, setCaptchaFailed] = useState(false);
 
   // Sunucu yanıtı action içinde işlenir: toast, form temizliği ve
   // Turnstile token'ı tek kullanımlık olduğu için widget'ı yenileme
@@ -271,20 +273,33 @@ export function ContactForm() {
             <Turnstile
               ref={turnstileRef}
               siteKey={turnstileSiteKey}
+              // Script hiç yüklenemezse (ör. reklam engelleyici) widget onError çağrılmaz
+              scriptOptions={{ onError: () => setCaptchaFailed(true) }}
               options={{
                 language: locale,
                 theme: "dark",
                 size: compactCaptcha ? "compact" : "flexible",
               }}
-              onSuccess={() => setVerified(true)}
+              onSuccess={() => {
+                setVerified(true);
+                setCaptchaFailed(false);
+              }}
               onExpire={() => {
                 setVerified(false);
                 turnstileRef.current?.reset();
               }}
-              onError={() => setVerified(false)}
+              onError={() => {
+                setVerified(false);
+                setCaptchaFailed(true);
+              }}
             />
           )}
         </div>
+      )}
+      {captchaFailed && (
+        <p role="alert" className="-mt-2 text-sm text-destructive">
+          {t("form.captchaUnavailable")}
+        </p>
       )}
 
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
