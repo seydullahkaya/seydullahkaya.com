@@ -123,9 +123,10 @@ export async function sendContact(
   const topicLabel = t(`topics.${topic}`);
 
   const { error } = await new Resend(apiKey).emails.send({
+    // seydullahkaya.com Resend'de doğrulandı (DKIM/SPF/DMARC GoDaddy DNS'te)
     from:
       process.env.CONTACT_FROM_EMAIL ??
-      "seydullahkaya.com <onboarding@resend.dev>",
+      "Seydullah Kaya <iletisim@seydullahkaya.com>",
     to: process.env.CONTACT_TO_EMAIL ?? site.email,
     replyTo: email,
     subject: `[seydullahkaya.com] ${topicLabel} — ${name}`,
