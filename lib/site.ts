@@ -2,6 +2,7 @@
 
 export const site = {
   name: "Seydullah Kaya",
+  url: "https://seydullahkaya.com",
   email: "seydullahkaya@gmail.com",
   // TODO: WhatsApp numarası (ülke koduyla, boşluksuz: 905xxxxxxxxx)
   whatsappNumber: "",

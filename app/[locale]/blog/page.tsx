@@ -22,6 +22,12 @@ export async function generateMetadata({
   return {
     title: t("metaTitle"),
     description: t("description"),
+    openGraph: {
+      type: "website",
+      siteName: "Seydullah Kaya",
+      title: t("metaTitle"),
+      description: t("description"),
+    },
     alternates: {
       canonical: getPathname({ href: "/blog", locale }),
       languages: {

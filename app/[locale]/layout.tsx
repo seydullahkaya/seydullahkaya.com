@@ -6,6 +6,7 @@ import { getTranslations } from "next-intl/server";
 import { MotionProvider } from "@/components/motion";
 import { Toaster } from "@/components/ui/sonner";
 import { routing } from "@/i18n/routing";
+import { site } from "@/lib/site";
 import "../globals.css";
 
 // latin-ext: Türkçe karakterler (ğ, ş, ı, İ) için gerekli
@@ -31,13 +32,21 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "Metadata" });
 
   return {
-    metadataBase: new URL("https://seydullahkaya.com"),
+    metadataBase: new URL(site.url),
     title: t("title"),
     description: t("description"),
     alternates: {
       canonical: locale === routing.defaultLocale ? "/" : `/${locale}`,
       languages: { tr: "/", en: "/en", "x-default": "/" },
     },
+    openGraph: {
+      type: "website",
+      siteName: site.name,
+      locale: locale === "tr" ? "tr_TR" : "en_US",
+      title: t("title"),
+      description: t("description"),
+    },
+    twitter: { card: "summary_large_image" },
   };
 }
 

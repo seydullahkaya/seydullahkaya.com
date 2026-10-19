@@ -59,10 +59,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     openGraph: {
       type: "article",
+      siteName: "Seydullah Kaya",
       title: post.meta.title,
       description: post.meta.description,
       publishedTime: post.meta.date,
-      locale,
+      locale: locale === "tr" ? "tr_TR" : "en_US",
     },
   };
 }

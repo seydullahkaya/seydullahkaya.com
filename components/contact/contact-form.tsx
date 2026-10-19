@@ -27,11 +27,16 @@ import {
 } from "@/lib/contact";
 import { cn } from "@/lib/utils";
 
-// Cloudflare'in herkese açık test anahtarı (her zaman geçer). Sadece geliştirmede.
+// Turnstile site anahtarı herkese açıktır (sayfa kaynağında görünür), bu yüzden kodda
+// durabilir. Gizli anahtar (TURNSTILE_SECRET_KEY) sadece sunucuda, ortam değişkeninde.
+// Geliştirmede Cloudflare'in her zaman geçen test anahtarı kullanılır.
+const TURNSTILE_SITE_KEY = "0x4AAAAAAFbCDZQ7YO4aLtF1";
 const TURNSTILE_TEST_SITE_KEY = "1x00000000000000000000AA";
 const turnstileSiteKey =
   process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ??
-  (process.env.NODE_ENV === "production" ? undefined : TURNSTILE_TEST_SITE_KEY);
+  (process.env.NODE_ENV === "production"
+    ? TURNSTILE_SITE_KEY
+    : TURNSTILE_TEST_SITE_KEY);
 
 type Values = {
   name: string;
