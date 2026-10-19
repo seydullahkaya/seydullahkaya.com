@@ -58,6 +58,8 @@ export function ContactForm() {
   const [clientErrors, setClientErrors] = useState<FieldErrors | null>(null);
   const startedAtRef = useRef(0);
   const turnstileRef = useRef<TurnstileInstance>(null);
+  // Doğrulama tamamlanmadan gönderim yapılmasın (boş token sunucuda reddedilir)
+  const [verified, setVerified] = useState(!turnstileSiteKey);
 
   // Sunucu yanıtı action içinde işlenir: toast, form temizliği ve
   // Turnstile token'ı tek kullanımlık olduğu için widget'ı yenileme
@@ -67,6 +69,7 @@ export function ContactForm() {
       formData.set("elapsedMs", String(Date.now() - startedAtRef.current));
       const result = await sendContact(prev, formData);
       turnstileRef.current?.reset();
+      setVerified(false);
       if (result.status === "success") {
         toast.success(t("toast.successTitle"), {
           description: t("toast.successBody"),
@@ -103,6 +106,10 @@ export function ContactForm() {
     const parsed = contactSchema.safeParse(values);
     if (parsed.success) {
       setClientErrors(null);
+      if (!verified) {
+        toast.error(t("toast.captcha"));
+        return;
+      }
       const formData = new FormData(e.currentTarget);
       startTransition(() => formAction(formData));
       return;
@@ -237,6 +244,12 @@ export function ContactForm() {
           ref={turnstileRef}
           siteKey={turnstileSiteKey}
           options={{ language: locale, theme: "light", size: "flexible" }}
+          onSuccess={() => setVerified(true)}
+          onExpire={() => {
+            setVerified(false);
+            turnstileRef.current?.reset();
+          }}
+          onError={() => setVerified(false)}
         />
       )}
 
