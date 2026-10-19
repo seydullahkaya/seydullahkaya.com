@@ -12,7 +12,12 @@ export function SectionHeading({
   return (
     <div className="max-w-2xl">
       <RevealItem>
-        <p className="eyebrow text-primary">{eyebrow}</p>
+        <p className="eyebrow text-primary">
+          <span className="text-muted-foreground" aria-hidden="true">
+            {"// "}
+          </span>
+          {eyebrow}
+        </p>
       </RevealItem>
       <RevealItem>
         <h2 className="mt-4 text-h2 text-balance">{title}</h2>

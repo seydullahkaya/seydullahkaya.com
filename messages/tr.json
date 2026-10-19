@@ -28,7 +28,18 @@
     "description": "Ben Seydullah, Kahramanmaraş merkezli bilgisayar mühendisi ve freelance yazılım geliştiriciyim. Kurumsal sitelerden web ve mobil uygulamalara kadar fikrinizi hızlı, güvenilir ve bakımı kolay ürünlere dönüştürüyorum.",
     "primaryCta": "Hizmetlerime göz at",
     "secondaryCta": "Teklif al",
-    "techLabel": "Kullandığım teknolojiler"
+    "techLabel": "Kullandığım teknolojiler",
+    "terminal": {
+      "title": "~/projeler — zsh",
+      "command": "yeni-proje --musteri \"işletmeniz\"",
+      "steps": [
+        "Analiz: hedefler ve ihtiyaçlar netleşti",
+        "Tasarım: modern, mobil uyumlu arayüz",
+        "Geliştirme: Next.js · TypeScript · Supabase",
+        "Yayın: canlıda, hızlı ve güvenli"
+      ],
+      "done": "Proje hazır. Sıradaki sizinki."
+    }
   },
   "About": {
     "eyebrow": "Hakkımda",

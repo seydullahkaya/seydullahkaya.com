@@ -8,7 +8,7 @@ export const ogSize = { width: 1200, height: 630 };
 
 // Tasarım tokenlarının OG görselindeki karşılıkları (Bölüm 4.2)
 const color = {
-  background: "#05060F",
+  background: "#121A42",
   foreground: "#EEF0FF",
   muted: "#A3AACB",
   border: "#1F2547",

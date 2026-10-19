@@ -28,7 +28,18 @@
     "description": "I'm Seydullah, a computer engineer and freelance software developer based in Kahramanmaraş, Türkiye. From business websites to web and mobile apps, I turn your idea into fast, reliable and maintainable products.",
     "primaryCta": "Explore my services",
     "secondaryCta": "Get a quote",
-    "techLabel": "Technologies I work with"
+    "techLabel": "Technologies I work with",
+    "terminal": {
+      "title": "~/projects — zsh",
+      "command": "new-project --client \"you\"",
+      "steps": [
+        "Discovery: goals and requirements defined",
+        "Design: modern, responsive interface",
+        "Development: Next.js · TypeScript · Supabase",
+        "Launch: live, fast and secure"
+      ],
+      "done": "Project shipped. Yours is next."
+    }
   },
   "About": {
     "eyebrow": "About",

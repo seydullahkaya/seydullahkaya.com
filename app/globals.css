@@ -7,32 +7,33 @@
 
 /*
  * Tasarım tokenları: uzay teması.
- * Derin uzay zemini, nebula vurguları (camgöbeği → mor → pembe).
+ * Gece yarısı indigosu zemin, nebula vurguları (camgöbeği → mor → pembe)
+ * ve bilgisayar ögeleri (terminal, neon grid, kod yorumu etiketleri).
  * shadcn değişken adları korunur. Kontrastlar WCAG AA (metin ≥ 4.5:1).
  */
 :root {
   color-scheme: dark;
-  --background: #05060f;
+  --background: #121a42;
   --foreground: #eef0ff;
-  --card: rgb(14 18 40 / 0.72);
+  --card: rgb(30 38 88 / 0.62);
   --card-foreground: #eef0ff;
-  --popover: #0c1024;
+  --popover: #182050;
   --popover-foreground: #eef0ff;
-  --primary: #a78bfa;
+  --primary: #b9a6ff;
   --primary-foreground: #0a0718;
-  --secondary: #161a33;
+  --secondary: #1d2656;
   --secondary-foreground: #eef0ff;
-  --muted: #161a33;
-  --muted-foreground: #a3aacb;
-  --accent: #1a1640;
+  --muted: #1d2656;
+  --muted-foreground: #b4bbdc;
+  --accent: #2a2466;
   --accent-foreground: #c4b5fd;
-  --accent-soft: #1a1640;
+  --accent-soft: #2a2466;
   --success: #34d399;
   --whatsapp: #25d366;
   --destructive: #f87171;
-  --border: #1f2547;
-  --input: #252b52;
-  --ring: #a78bfa;
+  --border: #2b3570;
+  --input: #34407e;
+  --ring: #b9a6ff;
   --radius: 1rem;
 
   /* Nebula paleti */
@@ -290,18 +291,19 @@
 /* Uzay arka planı (components/space-background.tsx): nebula + 3 katman yıldız */
 .space-nebula {
   background:
-    radial-gradient(60% 45% at 15% 0%, rgb(91 76 240 / 0.28), transparent 70%),
+    radial-gradient(60% 45% at 15% 0%, rgb(124 92 255 / 0.4), transparent 70%),
     radial-gradient(
-      45% 40% at 90% 15%,
-      rgb(34 211 238 / 0.14),
+      45% 40% at 90% 12%,
+      rgb(34 211 238 / 0.22),
       transparent 70%
     ),
     radial-gradient(
-      50% 45% at 75% 85%,
-      rgb(192 38 211 / 0.16),
+      50% 45% at 78% 88%,
+      rgb(217 70 239 / 0.24),
       transparent 70%
     ),
-    radial-gradient(40% 35% at 10% 75%, rgb(124 58 237 / 0.14), transparent 70%);
+    radial-gradient(40% 35% at 8% 72%, rgb(99 102 241 / 0.24), transparent 70%),
+    linear-gradient(180deg, #10173c 0%, #141c4a 55%, #191848 100%);
 }
 .space-stars-sm {
   background-image:
@@ -458,18 +460,53 @@
   }
 }
 
-/* Hero'daki gezegen ufku */
+/* Hero terminali (components/terminal-window.tsx) */
+.terminal-type {
+  display: inline-block;
+  width: calc(var(--chars) * 1ch);
+  animation-name: terminal-type;
+  animation-timing-function: steps(var(--chars), end);
+  animation-fill-mode: both;
+}
+@keyframes terminal-type {
+  from {
+    width: 0;
+  }
+}
+.terminal-line {
+  animation: terminal-line 0.35s ease-out both;
+}
+@keyframes terminal-line {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+.terminal-cursor {
+  animation: terminal-blink 1s steps(1) infinite;
+}
+@keyframes terminal-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Hero'daki dijital gezegen: grid yüzey ve parlayan kenar (kapsayıcı maske ile alta doğru kaybolur) */
 .planet {
-  background: radial-gradient(
-    circle at 50% 0%,
-    rgb(124 58 237 / 0.45),
-    rgb(14 18 40 / 0.95) 18%,
-    #05060f 45%
-  );
+  background:
+    radial-gradient(circle at 50% 0%, rgb(139 92 246 / 0.42), transparent 32%),
+    linear-gradient(to right, rgb(103 232 249 / 0.16) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(185 166 255 / 0.16) 1px, transparent 1px),
+    rgb(26 32 84 / 0.72);
+  background-size:
+    100% 100%,
+    56px 56px,
+    56px 56px,
+    100% 100%;
   box-shadow:
-    0 -2px 0 0 rgb(196 181 253 / 0.55),
-    0 -24px 80px -10px rgb(124 58 237 / 0.55),
-    0 -60px 160px -20px rgb(34 211 238 / 0.18);
+    0 -2px 0 0 rgb(196 181 253 / 0.6),
+    0 -24px 80px -10px rgb(124 92 255 / 0.55),
+    0 -60px 160px -20px rgb(34 211 238 / 0.2);
 }
 
 /* Kaydırınca belirme (components/motion.tsx). JS kapalıysa içerik gizlenmez. */

@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 import { type CSSProperties, Fragment } from "react";
 import { PillLink } from "@/components/pill-link";
+import { TerminalWindow } from "@/components/terminal-window";
 import { ctaHref, techMarquee } from "@/lib/site";
 
 // Giriş animasyonları saf CSS (globals.css: hero-word, hero-rise, hero-fade).
@@ -53,6 +54,10 @@ export function Hero() {
               {i < words.length - 1 && " "}
             </Fragment>
           ))}
+          <span
+            aria-hidden="true"
+            className="terminal-cursor ml-[0.08em] inline-block h-[0.78em] w-[0.09em] translate-y-[0.04em] rounded-[1px] bg-[var(--nebula-cyan)] shadow-[0_0_12px_var(--nebula-cyan)]"
+          />
         </h1>
 
         <p
@@ -86,7 +91,14 @@ export function Hero() {
       </div>
 
       <div
-        className="mt-20 animate-hero-fade md:mt-28"
+        className="container-page mt-14 animate-hero-rise md:mt-16"
+        style={delay(afterTitle + 0.15)}
+      >
+        <TerminalWindow startDelay={afterTitle + 0.5} />
+      </div>
+
+      <div
+        className="mt-16 animate-hero-fade md:mt-20"
         style={delay(afterTitle + 0.2)}
       >
         <TechMarquee label={t("techLabel")} />
@@ -103,8 +115,10 @@ function HeroBackground() {
     >
       {/* Başlığın arkasında nebula parıltısı */}
       <div className="absolute top-10 left-1/2 h-[520px] w-[900px] max-w-[160vw] -translate-x-1/2 bg-[radial-gradient(closest-side,rgb(124_58_237/0.32),transparent),radial-gradient(closest-side_at_30%_60%,rgb(34_211_238/0.14),transparent),radial-gradient(closest-side_at_72%_55%,rgb(240_171_252/0.14),transparent)]" />
-      {/* Ufuktaki gezegen: koyu gövde + atmosfer ışıması */}
-      <div className="planet absolute top-[78%] left-1/2 aspect-square w-[1800px] max-w-[260vw] -translate-x-1/2 rounded-full md:top-[72%]" />
+      {/* Ufuktaki dijital gezegen: grid yüzey + atmosfer ışıması, alta doğru sayfaya karışır */}
+      <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,#000_62%,transparent_100%)]">
+        <div className="planet absolute top-[78%] left-1/2 aspect-square w-[1800px] max-w-[260vw] -translate-x-1/2 rounded-full md:top-[72%]" />
+      </div>
     </div>
   );
 }
