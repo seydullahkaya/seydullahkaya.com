@@ -14,6 +14,7 @@
     "mobileLabel": "Mobile menu",
     "menu": "Menu",
     "openMenu": "Open menu",
+    "closeMenu": "Close menu",
     "about": "About",
     "services": "Services",
     "blog": "Blog",
@@ -115,6 +116,8 @@
     "emailLabel": "Email",
     "whatsappLabel": "WhatsApp",
     "whatsappValue": "Send a quick message",
+    "googleLabel": "Google Business",
+    "googleValue": "See my profile, leave a review",
     "locationLabel": "Location",
     "locationValue": "Kahramanmaraş · Working with clients everywhere",
     "form": {

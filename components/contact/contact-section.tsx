@@ -1,8 +1,8 @@
 import { Mail, MapPin } from "lucide-react";
 import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
-import { WhatsappIcon } from "@/components/brand-icons";
-import { ContactForm } from "@/components/contact/contact-form";
+import { GoogleIcon, WhatsappIcon } from "@/components/brand-icons";
+import { ContactFormLazy } from "@/components/contact/contact-form-lazy";
 import { Reveal, RevealItem } from "@/components/motion";
 import { SectionHeading } from "@/components/section-heading";
 import { site, whatsappUrl } from "@/lib/site";
@@ -14,7 +14,7 @@ export function ContactSection() {
   return (
     <section id="contact" className="border-t border-border/60 section-y">
       {/* Mobilde sıra: başlık → form → kartlar. Masaüstünde form sağda, iki satır boyunca. */}
-      <Reveal className="container-page grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:grid-rows-[auto_1fr] lg:gap-x-16 lg:gap-y-10">
+      <Reveal className="container-page grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:grid-rows-[auto_1fr] lg:gap-x-16 lg:gap-y-10">
         <div className="lg:col-start-1 lg:row-start-1">
           <SectionHeading
             eyebrow={t("eyebrow")}
@@ -24,10 +24,10 @@ export function ContactSection() {
         </div>
 
         <RevealItem className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
-          <ContactForm />
+          <ContactFormLazy />
         </RevealItem>
 
-        <ul className="grid content-start gap-3 lg:col-start-1 lg:row-start-2">
+        <ul className="grid grid-cols-1 content-start gap-3 lg:col-start-1 lg:row-start-2">
           <InfoCard
             href={`mailto:${site.email}`}
             icon={<Mail className="size-4" />}
@@ -40,6 +40,13 @@ export function ContactSection() {
             icon={<WhatsappIcon className="size-4 text-whatsapp" />}
             label={t("whatsappLabel")}
             value={t("whatsappValue")}
+          />
+          <InfoCard
+            href={site.socials.google}
+            external
+            icon={<GoogleIcon className="size-4" />}
+            label={t("googleLabel")}
+            value={t("googleValue")}
           />
           <InfoCard
             icon={<MapPin className="size-4" />}

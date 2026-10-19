@@ -90,6 +90,31 @@ export function ContactForm() {
     startedAtRef.current = Date.now();
   }, []);
 
+  // Turnstile (script + iframe) sayfa açılışını yavaşlatmasın: form ekrana
+  // yaklaşınca yüklenir
+  const formRef = useRef<HTMLFormElement>(null);
+  const [captchaVisible, setCaptchaVisible] = useState(false);
+  // "flexible" en az 300px ister; çok dar ekranlarda kompakt widget
+  // (form yalnızca tarayıcıda yüklendiği için window güvenle okunur)
+  const [compactCaptcha] = useState(
+    () => window.matchMedia("(max-width: 379px)").matches,
+  );
+  useEffect(() => {
+    const el = formRef.current;
+    if (!el || !turnstileSiteKey) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setCaptchaVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "600px 0px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   const serverErrors = state.status === "error" ? state.fieldErrors : undefined;
   const errors: FieldErrors = clientErrors ?? serverErrors ?? {};
 
@@ -133,9 +158,10 @@ export function ContactForm() {
 
   return (
     <form
+      ref={formRef}
       onSubmit={onSubmit}
       noValidate
-      className="grid gap-5 rounded-xl border border-border bg-card p-6 shadow-[0_1px_2px_rgb(0_0_0/0.03)] md:p-8"
+      className="grid grid-cols-1 gap-5 rounded-xl border border-border bg-card p-6 shadow-[0_1px_2px_rgb(0_0_0/0.03)] md:p-8"
     >
       <input type="hidden" name="locale" value={locale} />
       {/* Honeypot: ekran dışında, botlar doldurur */}
@@ -240,17 +266,25 @@ export function ContactForm() {
       </Field>
 
       {turnstileSiteKey && (
-        <Turnstile
-          ref={turnstileRef}
-          siteKey={turnstileSiteKey}
-          options={{ language: locale, theme: "light", size: "flexible" }}
-          onSuccess={() => setVerified(true)}
-          onExpire={() => {
-            setVerified(false);
-            turnstileRef.current?.reset();
-          }}
-          onError={() => setVerified(false)}
-        />
+        <div className="min-h-[65px]">
+          {captchaVisible && (
+            <Turnstile
+              ref={turnstileRef}
+              siteKey={turnstileSiteKey}
+              options={{
+                language: locale,
+                theme: "light",
+                size: compactCaptcha ? "compact" : "flexible",
+              }}
+              onSuccess={() => setVerified(true)}
+              onExpire={() => {
+                setVerified(false);
+                turnstileRef.current?.reset();
+              }}
+              onError={() => setVerified(false)}
+            />
+          )}
+        </div>
       )}
 
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">

@@ -40,3 +40,11 @@ export function YoutubeIcon(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+export function GoogleIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.85 3.18-1.73 4.1-1.08 1.08-2.76 2.26-5.7 2.26-4.54 0-8.1-3.67-8.1-8.2s3.56-8.2 8.1-8.2c2.45 0 4.24.96 5.56 2.2l2.3-2.3C18.75 1.8 16.07.5 12.48.5 6.06.5.68 5.7.68 12.13s5.38 11.62 11.8 11.62c3.47 0 6.1-1.14 8.14-3.27 2.1-2.1 2.76-5.06 2.76-7.45 0-.74-.06-1.42-.17-2.11h-10.73Z" />
+    </svg>
+  );
+}

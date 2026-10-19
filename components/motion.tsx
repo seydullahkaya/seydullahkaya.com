@@ -1,24 +1,10 @@
 "use client";
 
-import { MotionConfig, motion, type Variants } from "motion/react";
-import type { ReactNode } from "react";
+import { type ReactNode, useEffect, useRef } from "react";
 
-const ease = [0.22, 1, 0.36, 1] as const;
-
-// reducedMotion="user": prefers-reduced-motion açıksa transform animasyonları kapanır
-export function MotionProvider({ children }: { children: ReactNode }) {
-  return <MotionConfig reducedMotion="user">{children}</MotionConfig>;
-}
-
-const container: Variants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.08 } },
-};
-
-const item: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease } },
-};
+// Kaydırınca belirme efekti: animasyon kütüphanesi yerine IntersectionObserver
+// ve CSS geçişleri (globals.css → [data-reveal-item]). JS paketini küçük tutar.
+const STAGGER_MS = 80;
 
 /** Ekrana girince içindeki <RevealItem>'ları sırayla aşağıdan yukarı belirtir. */
 export function Reveal({
@@ -28,31 +14,47 @@ export function Reveal({
   children: ReactNode;
   className?: string;
 }) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    el.querySelectorAll<HTMLElement>("[data-reveal-item]").forEach(
+      (item, i) => {
+        item.style.transitionDelay = `${i * STAGGER_MS}ms`;
+      },
+    );
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          el.dataset.revealed = "true";
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "0px 0px -80px 0px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <motion.div
-      className={className}
-      variants={container}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin: "0px 0px -80px 0px" }}
-    >
+    <div ref={ref} className={className} data-reveal>
       {children}
-    </motion.div>
+    </div>
   );
 }
 
 export function RevealItem({
   children,
   className,
-  as = "div",
+  as: Component = "div",
 }: {
   children: ReactNode;
   className?: string;
   as?: "div" | "li";
 }) {
-  const Component = as === "li" ? motion.li : motion.div;
   return (
-    <Component className={className} variants={item}>
+    <Component className={className} data-reveal-item>
       {children}
     </Component>
   );

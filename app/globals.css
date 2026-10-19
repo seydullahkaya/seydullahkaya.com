@@ -117,6 +117,28 @@
   --animate-marquee: marquee 40s linear infinite;
   --animate-nudge: nudge 0.9s cubic-bezier(0.28, 0.84, 0.42, 1) 1;
   --animate-ping-slow: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  --animate-hero-word: hero-word 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-hero-rise: hero-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-hero-fade: hero-fade 0.8s ease-out both;
+
+  @keyframes hero-word {
+    from {
+      opacity: 0;
+      transform: translateY(0.35em);
+      filter: blur(8px);
+    }
+  }
+  /* LCP öğeleri gizlenmez, sadece kayar */
+  @keyframes hero-rise {
+    from {
+      transform: translateY(14px);
+    }
+  }
+  @keyframes hero-fade {
+    from {
+      opacity: 0;
+    }
+  }
 
   @keyframes marquee {
     to {
@@ -264,6 +286,47 @@
 }
 .prose-post [data-rehype-pretty-code-figure] [data-line] {
   padding-inline: 1rem;
+}
+
+/* Kaydırınca belirme (components/motion.tsx). JS kapalıysa içerik gizlenmez. */
+@media (scripting: enabled) {
+  [data-reveal] [data-reveal-item] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  [data-reveal][data-revealed] [data-reveal-item] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Mobil menü (<dialog>) açılış geçişi */
+.mobile-menu[open] {
+  animation: hero-fade 0.2s ease-out;
+}
+html:has(.mobile-menu[open]) {
+  overflow: hidden;
+}
+
+/* Blog okuma ilerleme çubuğu: scroll-driven animation */
+.reading-progress {
+  display: none;
+}
+@supports (animation-timeline: scroll()) {
+  .reading-progress {
+    display: block;
+    transform: scaleX(0);
+    animation: reading-progress linear both;
+    animation-timeline: scroll(root);
+  }
+  @keyframes reading-progress {
+    to {
+      transform: scaleX(1);
+    }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

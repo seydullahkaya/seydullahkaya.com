@@ -16,7 +16,7 @@ export async function StructuredData({ locale }: { locale: Locale }) {
     addressRegion: site.city,
     addressCountry: site.countryCode,
   };
-  const sameAs = socialLinks.map((s) => s.href);
+  const sameAs = [...socialLinks.map((s) => s.href), site.googleKgUrl];
   const homeUrl = locale === "tr" ? site.url : `${site.url}/${locale}`;
 
   const data = {
@@ -50,12 +50,14 @@ export async function StructuredData({ locale }: { locale: Locale }) {
         description: t("description"),
         url: homeUrl,
         email: site.email,
+        telephone: `+${site.whatsappNumber}`,
         image: `${site.url}/${locale}/opengraph-image`,
         address,
         areaServed: [
           { "@type": "City", name: site.city },
           { "@type": "Country", name: "Türkiye" },
         ],
+        hasMap: site.socials.google,
         founder: { "@id": `${site.url}/#person` },
         knowsLanguage: ["tr", "en"],
         serviceType: (

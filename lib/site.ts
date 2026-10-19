@@ -4,8 +4,8 @@ export const site = {
   name: "Seydullah Kaya",
   url: "https://seydullahkaya.com",
   email: "seydullahkaya@gmail.com",
-  // TODO: WhatsApp numarası (ülke koduyla, boşluksuz: 905xxxxxxxxx)
-  whatsappNumber: "",
+  // wa.me formatı: ülke koduyla, "+" ve boşluk olmadan
+  whatsappNumber: "905071621061",
   timeZone: "Europe/Istanbul",
   // Yerel SEO (JSON-LD) için konum
   city: "Kahramanmaraş",
@@ -16,7 +16,11 @@ export const site = {
     linkedin: "https://www.linkedin.com/in/seydullah-kaya-1b155116b/",
     x: "https://x.com/seydullahkaya",
     youtube: "https://www.youtube.com/@seydullahkaya",
+    // Google İşletme Profili (paylaşım linki)
+    google: "https://share.google/B5wrHwmXtUvBZM9P0",
   },
+  // Google bilgi grafiği kimliği: JSON-LD'de işletme profiliyle eşleşme için
+  googleKgUrl: "https://www.google.com/search?kgmid=/g/11vjv4z39p",
 } as const;
 
 export const socialLinks = Object.entries(site.socials)

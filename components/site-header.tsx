@@ -1,17 +1,10 @@
 "use client";
 
-import { Menu } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { MobileMenu } from "@/components/mobile-menu";
 import { PillLink } from "@/components/pill-link";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
 import { getPathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { ctaHref, navItems, site } from "@/lib/site";
@@ -53,7 +46,7 @@ export function SiteHeader() {
           >
             SK
           </span>
-          <span className="hidden sm:inline">{site.name}</span>
+          <span className="sr-only sm:not-sr-only">{site.name}</span>
         </a>
 
         {/* Masaüstü: ortada yüzen menü kapsülü */}
@@ -86,48 +79,16 @@ export function SiteHeader() {
           </PillLink>
 
           {/* Mobil: tam ekran menü */}
-          <Sheet>
-            <SheetTrigger
-              aria-label={t("openMenu")}
-              className="grid size-10 place-items-center rounded-full border border-border bg-card outline-none focus-visible:ring-3 focus-visible:ring-ring/40 md:hidden"
-            >
-              <Menu className="size-5" />
-            </SheetTrigger>
-            <SheetContent
-              side="top"
-              className="gap-0 border-none bg-background px-4 pt-20 pb-8 data-[side=top]:h-dvh"
-            >
-              <SheetTitle className="sr-only">{t("menu")}</SheetTitle>
-              <nav
-                aria-label={t("mobileLabel")}
-                className="flex flex-1 flex-col"
-              >
-                <ul className="flex flex-col">
-                  {navItems.map((item) => (
-                    <li key={item.href} className="border-b border-border">
-                      <SheetClose
-                        nativeButton={false}
-                        render={<a href={linkFor(item.href)} />}
-                        className="block py-5 text-3xl font-semibold tracking-tight"
-                      >
-                        {t(item.key)}
-                      </SheetClose>
-                    </li>
-                  ))}
-                </ul>
-                <LanguageSwitcher className="mt-8 self-start" />
-                <SheetClose
-                  nativeButton={false}
-                  render={
-                    <PillLink href={`${home}${ctaHref.contact}`} size="lg" />
-                  }
-                  className="mt-auto w-full"
-                >
-                  {tHero("secondaryCta")}
-                </SheetClose>
-              </nav>
-            </SheetContent>
-          </Sheet>
+          <MobileMenu
+            links={navItems.map((item) => ({
+              href: linkFor(item.href),
+              label: t(item.key),
+            }))}
+            cta={{
+              href: `${home}${ctaHref.contact}`,
+              label: tHero("secondaryCta"),
+            }}
+          />
         </div>
       </div>
     </header>

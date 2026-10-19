@@ -1,6 +1,7 @@
 import { useLocale, useTranslations } from "next-intl";
 import {
   GithubIcon,
+  GoogleIcon,
   LinkedinIcon,
   WhatsappIcon,
   XIcon,
@@ -18,6 +19,7 @@ const socialMeta = {
   linkedin: { label: "LinkedIn", Icon: LinkedinIcon },
   x: { label: "X", Icon: XIcon },
   youtube: { label: "YouTube", Icon: YoutubeIcon },
+  google: { label: "Google", Icon: GoogleIcon },
 } as const;
 
 export function SiteFooter() {

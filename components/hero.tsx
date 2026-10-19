@@ -1,20 +1,12 @@
-"use client";
-
-import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
-import { Fragment } from "react";
+import { type CSSProperties, Fragment } from "react";
 import { PillLink } from "@/components/pill-link";
 import { ctaHref, techMarquee } from "@/lib/site";
 
-const ease = [0.22, 1, 0.36, 1] as const;
-
-function fadeUp(delay: number) {
-  return {
-    initial: { opacity: 0, y: 16, filter: "blur(6px)" },
-    animate: { opacity: 1, y: 0, filter: "blur(0px)" },
-    transition: { duration: 0.6, ease, delay },
-  };
-}
+// Giriş animasyonları saf CSS (globals.css: hero-word, hero-rise, hero-fade).
+// JS beklemeden ilk boyamada başlar; LCP öğesi (açıklama) hiç gizlenmez,
+// sadece yukarı kayar. prefers-reduced-motion açıksa animasyonlar kapanır.
+const delay = (s: number): CSSProperties => ({ animationDelay: `${s}s` });
 
 export function Hero() {
   const t = useTranslations("Hero");
@@ -27,7 +19,7 @@ export function Hero() {
       .split(" ")
       .map((w) => ({ w, hl: false })),
   ];
-  const afterTitle = 0.15 + words.length * 0.06;
+  const afterTitle = 0.1 + words.length * 0.04;
 
   return (
     <section
@@ -37,43 +29,42 @@ export function Hero() {
       <HeroBackground />
 
       <div className="container-page flex flex-col items-center text-center">
-        <motion.p
-          {...fadeUp(0)}
-          className="inline-flex items-center gap-2 rounded-full border border-border bg-card/80 py-1.5 pr-3.5 pl-3 eyebrow text-muted-foreground shadow-[0_1px_2px_rgb(0_0_0/0.04)] backdrop-blur"
-        >
+        <p className="inline-flex animate-hero-rise items-center gap-2 rounded-full border border-border bg-card/80 py-1.5 pr-3.5 pl-3 eyebrow text-muted-foreground shadow-[0_1px_2px_rgb(0_0_0/0.04)] backdrop-blur">
           <span className="relative flex size-2" aria-hidden="true">
             <span className="absolute inline-flex size-full animate-ping-slow rounded-full bg-success opacity-60" />
             <span className="relative inline-flex size-2 rounded-full bg-success" />
           </span>
           {t("badge")}
-        </motion.p>
+        </p>
 
         <h1 className="mt-7 max-w-[16ch] text-display text-balance">
           {words.map(({ w, hl }, i) => (
             <Fragment key={i}>
-              <motion.span
-                className={hl ? "inline-block text-gradient" : "inline-block"}
-                initial={{ opacity: 0, y: "0.35em", filter: "blur(8px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{ duration: 0.6, ease, delay: 0.1 + i * 0.06 }}
+              <span
+                className={
+                  hl
+                    ? "inline-block animate-hero-word text-gradient"
+                    : "inline-block animate-hero-word"
+                }
+                style={delay(0.05 + i * 0.04)}
               >
                 {w}
-              </motion.span>
+              </span>
               {i < words.length - 1 && " "}
             </Fragment>
           ))}
         </h1>
 
-        <motion.p
-          {...fadeUp(afterTitle)}
-          className="mt-6 max-w-[58ch] text-pretty text-muted-foreground md:text-lg"
+        <p
+          className="mt-6 max-w-[58ch] animate-hero-rise text-pretty text-muted-foreground md:text-lg"
+          style={delay(afterTitle)}
         >
           {t("description")}
-        </motion.p>
+        </p>
 
-        <motion.div
-          {...fadeUp(afterTitle + 0.1)}
-          className="mt-9 flex w-full flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row"
+        <div
+          className="mt-9 flex w-full animate-hero-rise flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row"
+          style={delay(afterTitle + 0.08)}
         >
           <PillLink
             href={ctaHref.services}
@@ -91,17 +82,15 @@ export function Hero() {
           >
             {t("secondaryCta")}
           </PillLink>
-        </motion.div>
+        </div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: afterTitle + 0.3 }}
-        className="mt-20 md:mt-28"
+      <div
+        className="mt-20 animate-hero-fade md:mt-28"
+        style={delay(afterTitle + 0.2)}
       >
         <TechMarquee label={t("techLabel")} />
-      </motion.div>
+      </div>
     </section>
   );
 }

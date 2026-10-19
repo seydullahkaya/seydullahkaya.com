@@ -14,6 +14,7 @@
     "mobileLabel": "Mobil menü",
     "menu": "Menü",
     "openMenu": "Menüyü aç",
+    "closeMenu": "Menüyü kapat",
     "about": "Hakkımda",
     "services": "Hizmetler",
     "blog": "Blog",
@@ -115,6 +116,8 @@
     "emailLabel": "E-posta",
     "whatsappLabel": "WhatsApp",
     "whatsappValue": "Hızlı mesaj gönder",
+    "googleLabel": "Google İşletme",
+    "googleValue": "Profilimi gör, yorum bırak",
     "locationLabel": "Konum",
     "locationValue": "Kahramanmaraş · Türkiye geneline hizmet",
     "form": {
