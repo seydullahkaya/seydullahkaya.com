@@ -39,7 +39,7 @@ export function MobileMenu({
         aria-label={t("menu")}
         // Arka plana (backdrop) tıklanınca kapanır
         onClick={(e) => e.target === e.currentTarget && close()}
-        className="mobile-menu m-0 h-dvh max-h-none w-full max-w-none bg-background p-0 text-foreground backdrop:bg-black/10"
+        className="mobile-menu m-0 h-dvh max-h-none w-full max-w-none bg-background p-0 text-foreground backdrop:bg-black/60"
       >
         <div className="flex h-full flex-col px-4 pt-4 pb-8">
           <button

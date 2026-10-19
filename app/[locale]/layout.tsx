@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations } from "next-intl/server";
+import { SpaceBackground } from "@/components/space-background";
 import { StructuredData } from "@/components/structured-data";
 import { routing } from "@/i18n/routing";
 import { site } from "@/lib/site";
@@ -18,6 +19,11 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin", "latin-ext"],
 });
+
+export const viewport: Viewport = {
+  themeColor: "#05060f",
+  colorScheme: "dark",
+};
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -64,6 +70,7 @@ export default async function LocaleLayout({
     >
       <body className="flex min-h-full flex-col">
         <StructuredData locale={locale} />
+        <SpaceBackground />
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
       </body>
     </html>

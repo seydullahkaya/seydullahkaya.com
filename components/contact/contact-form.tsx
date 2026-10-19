@@ -161,7 +161,7 @@ export function ContactForm() {
       ref={formRef}
       onSubmit={onSubmit}
       noValidate
-      className="grid grid-cols-1 gap-5 rounded-xl border border-border bg-card p-6 shadow-[0_1px_2px_rgb(0_0_0/0.03)] md:p-8"
+      className="grid grid-cols-1 gap-5 rounded-xl border border-border bg-card p-6 shadow-[inset_0_1px_0_rgb(255_255_255/0.05)] backdrop-blur-md md:p-8"
     >
       <input type="hidden" name="locale" value={locale} />
       {/* Honeypot: ekran dışında, botlar doldurur */}
@@ -273,7 +273,7 @@ export function ContactForm() {
               siteKey={turnstileSiteKey}
               options={{
                 language: locale,
-                theme: "light",
+                theme: "dark",
                 size: compactCaptcha ? "compact" : "flexible",
               }}
               onSuccess={() => setVerified(true)}

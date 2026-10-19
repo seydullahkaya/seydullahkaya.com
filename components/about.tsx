@@ -24,7 +24,7 @@ export function About() {
               {/* TODO: Profil fotoğrafı (PROJE_1.md Bölüm 9) */}
               <div
                 aria-hidden="true"
-                className="grid size-20 shrink-0 place-items-center rounded-2xl bg-[linear-gradient(135deg,var(--primary),color-mix(in_oklch,var(--primary),#a855f7_55%))] text-2xl font-semibold tracking-tight text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.25)] sm:size-24"
+                className="grid size-20 shrink-0 place-items-center rounded-2xl bg-[linear-gradient(135deg,var(--nebula-indigo),var(--nebula-purple)_55%,#c026d3)] text-2xl font-semibold tracking-tight text-white shadow-[0_8px_30px_-8px_rgb(124_58_237/0.7)] shadow-[inset_0_1px_0_rgb(255_255_255/0.25)] sm:size-24"
               >
                 SK
               </div>
@@ -116,7 +116,7 @@ function BentoCard({
   return (
     <RevealItem
       className={cn(
-        "flex flex-col rounded-lg border border-border bg-card p-6 shadow-[0_1px_2px_rgb(0_0_0/0.03)] md:p-8",
+        "flex flex-col rounded-lg border border-border bg-card p-6 shadow-[inset_0_1px_0_rgb(255_255_255/0.05)] backdrop-blur-md md:p-8",
         className,
       )}
     >

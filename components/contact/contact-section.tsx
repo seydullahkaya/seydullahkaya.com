@@ -87,7 +87,7 @@ function InfoCard({
     </>
   );
   const className =
-    "flex items-center gap-4 rounded-lg border border-border bg-card p-4 transition-colors";
+    "flex items-center gap-4 rounded-lg border border-border bg-card p-4 shadow-[inset_0_1px_0_rgb(255_255_255/0.05)] backdrop-blur-md transition-colors";
 
   return (
     <RevealItem as="li">

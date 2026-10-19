@@ -25,7 +25,7 @@ const withMDX = createMDX({
       "rehype-slug",
       [
         "rehype-pretty-code",
-        { theme: "github-light-high-contrast", keepBackground: false },
+        { theme: "github-dark-high-contrast", keepBackground: false },
       ],
     ],
   },

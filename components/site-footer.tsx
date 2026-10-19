@@ -34,7 +34,7 @@ export function SiteFooter() {
   }));
 
   return (
-    <footer className="border-t border-border bg-card">
+    <footer className="border-t border-border bg-card/60 backdrop-blur-md">
       <Reveal className="container-page flex flex-col items-center section-y text-center">
         <RevealItem>
           <h2 className="max-w-[14ch] text-display text-balance">

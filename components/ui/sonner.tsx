@@ -12,8 +12,8 @@ import {
 const Toaster = ({ ...props }: ToasterProps) => {
   return (
     <Sonner
-      // Koyu tema v2'de; şimdilik site açık temada
-      theme="light"
+      // Site uzay temasında (koyu)
+      theme="dark"
       className="toaster group"
       icons={{
         success: <CircleCheckIcon className="size-4" />,

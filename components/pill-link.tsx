@@ -4,14 +4,13 @@ import type { ComponentProps } from "react";
 import { cn } from "@/lib/utils";
 
 export const pillVariants = cva(
-  "group/pill inline-flex items-center justify-center gap-2 rounded-full font-medium whitespace-nowrap transition-[background-color,color,box-shadow,transform] duration-200 outline-none select-none focus-visible:ring-3 focus-visible:ring-ring/40 active:scale-[0.97]",
+  "group/pill inline-flex items-center justify-center gap-2 rounded-full font-medium whitespace-nowrap transition-[background-color,color,box-shadow,transform,filter,border-color] duration-200 outline-none select-none focus-visible:ring-3 focus-visible:ring-ring/40 active:scale-[0.97]",
   {
     variants: {
       variant: {
-        primary:
-          "bg-primary text-primary-foreground shadow-[0_1px_2px_rgb(0_0_0/0.08),inset_0_1px_0_rgb(255_255_255/0.18)] hover:bg-primary/90",
+        primary: "btn-glow hover:brightness-110",
         outline:
-          "border border-border bg-card text-foreground hover:bg-secondary",
+          "border border-white/12 bg-white/[0.04] text-foreground backdrop-blur hover:border-white/20 hover:bg-white/[0.08]",
         ghost: "text-muted-foreground hover:bg-secondary hover:text-foreground",
       },
       size: {

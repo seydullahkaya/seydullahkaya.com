@@ -30,11 +30,11 @@ export function SpotlightCard({
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 rounded-lg bg-[radial-gradient(360px_circle_at_var(--x)_var(--y),color-mix(in_oklch,var(--primary)_55%,transparent),transparent_45%)] opacity-0 transition-opacity duration-300 group-hover/spot:opacity-100"
       />
-      <div className="relative h-full overflow-hidden rounded-[calc(var(--radius)-1px)] bg-card">
+      <div className="relative h-full overflow-hidden rounded-[calc(var(--radius)-1px)] bg-popover">
         {/* İç ışık */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(480px_circle_at_var(--x)_var(--y),color-mix(in_oklch,var(--primary)_7%,transparent),transparent_45%)] opacity-0 transition-opacity duration-300 group-hover/spot:opacity-100"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(480px_circle_at_var(--x)_var(--y),color-mix(in_oklch,var(--primary)_14%,transparent),transparent_45%)] opacity-0 transition-opacity duration-300 group-hover/spot:opacity-100"
         />
         <div className="relative h-full">{children}</div>
       </div>

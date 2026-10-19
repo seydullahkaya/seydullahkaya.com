@@ -101,10 +101,10 @@ function HeroBackground() {
       aria-hidden="true"
       className="pointer-events-none absolute inset-0 -z-10"
     >
-      {/* Mesh gradient: accent rengi %4–6 opaklıkta */}
-      <div className="absolute -top-40 left-1/2 h-[640px] w-[1100px] -translate-x-1/2 bg-[radial-gradient(closest-side,color-mix(in_oklch,var(--primary)_9%,transparent),transparent),radial-gradient(closest-side_at_20%_60%,color-mix(in_oklch,#a855f7_6%,transparent),transparent),radial-gradient(closest-side_at_80%_55%,color-mix(in_oklch,#06b6d4_5%,transparent),transparent)] blur-2xl" />
-      {/* Kenarlara doğru kaybolan grid deseni */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_30%,#000_30%,transparent_100%)] bg-[size:56px_56px] opacity-70" />
+      {/* Başlığın arkasında nebula parıltısı */}
+      <div className="absolute top-10 left-1/2 h-[520px] w-[900px] max-w-[160vw] -translate-x-1/2 bg-[radial-gradient(closest-side,rgb(124_58_237/0.32),transparent),radial-gradient(closest-side_at_30%_60%,rgb(34_211_238/0.14),transparent),radial-gradient(closest-side_at_72%_55%,rgb(240_171_252/0.14),transparent)]" />
+      {/* Ufuktaki gezegen: koyu gövde + atmosfer ışıması */}
+      <div className="planet absolute top-[78%] left-1/2 aspect-square w-[1800px] max-w-[260vw] -translate-x-1/2 rounded-full md:top-[72%]" />
     </div>
   );
 }
